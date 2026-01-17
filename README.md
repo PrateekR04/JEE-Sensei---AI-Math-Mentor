@@ -238,4 +238,4 @@ This is a foundational implementation. Future contributions welcome for:
 
 ---
 
-**Built with ❤️ using Streamlit, PaddleOCR, and Whisper**
+**Built with ❤️ using Streamlit, EasyOCR, and Whisper**

@@ -17,6 +17,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from rag.retriever import KnowledgeRetriever
 from tools.calculator import Calculator
+from utils.math_formatter import format_answer, format_math_expression
 
 
 class SolverAgent:
@@ -156,7 +157,7 @@ Instructions:
 3. For each formula you use, cite it as [Source: filename]
 4. For equations, use this format to call calculator: CALC[solve("equation", "variable")]
 5. Show your working step-by-step with citations
-6. Provide the final answer
+6. At the END, you MUST write: "The final answer is: [your answer]"
 
 If any required formula is missing from the retrieved knowledge, stop and respond with "INSUFFICIENT CONTEXT: Missing [formula name]"
 
@@ -192,8 +193,8 @@ Solve the problem now using ONLY the retrieved knowledge above:"""
             answer = self._extract_answer(solution_text)
             
             return {
-                "answer": answer,
-                "working": solution_text,
+                "answer": format_answer(answer),
+                "working": format_math_expression(solution_text),
                 "sources": [r["source"] for r in retrieved],
                 "citations": citations,
                 "tool_calls": tool_calls,

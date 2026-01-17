@@ -22,6 +22,7 @@ from sympy.parsing.sympy_parser import (
 from llm.groq_client import GroqClient
 from rag.retriever import KnowledgeRetriever
 from agents.system_parser_agent import SystemParserAgent
+from utils.math_formatter import format_answer, format_math_expression
 
 
 # Safe parsing transformations
@@ -215,7 +216,8 @@ Computed Solution (verified by SymPy):
 Retrieved Knowledge:
 {context}
 
-Provide a clear step-by-step explanation with citations."""
+Provide a clear step-by-step explanation with citations.
+At the END, you MUST write: "The final answer is: x = [value], y = [value]" (or similar for your variables)"""
 
         try:
             working = self.llm.generate(prompt, temperature=0.1)
@@ -230,8 +232,8 @@ Provide a clear step-by-step explanation with citations."""
             citations.append({"source": source, "verified": source in [r["source"] for r in retrieved]})
         
         return {
-            "answer": answer,
-            "working": working,
+            "answer": format_answer(answer),
+            "working": format_math_expression(working),
             "sources": [r["source"] for r in retrieved],
             "citations": citations,
             "tool_calls": [{

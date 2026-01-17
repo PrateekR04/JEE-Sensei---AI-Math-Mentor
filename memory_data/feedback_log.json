@@ -89,5 +89,44 @@
     "original_answer": "",
     "topic": "calculus",
     "intent": "optimization"
+  },
+  {
+    "feedback_id": "fb_000008",
+    "problem_id": "2857b094",
+    "is_correct": true,
+    "correction": null,
+    "error_category": null,
+    "user_id": "default",
+    "timestamp": "2026-01-17T22:08:54.932593",
+    "problem_text": "",
+    "original_answer": "",
+    "topic": "calculus",
+    "intent": "derivative"
+  },
+  {
+    "feedback_id": "fb_000009",
+    "problem_id": "f3eead55",
+    "is_correct": true,
+    "correction": null,
+    "error_category": null,
+    "user_id": "default",
+    "timestamp": "2026-01-17T22:17:00.127924",
+    "problem_text": "",
+    "original_answer": "",
+    "topic": "calculus",
+    "intent": "derivative"
+  },
+  {
+    "feedback_id": "fb_000010",
+    "problem_id": "0ce5e5b1",
+    "is_correct": true,
+    "correction": null,
+    "error_category": null,
+    "user_id": "default",
+    "timestamp": "2026-01-17T22:52:08.973457",
+    "problem_text": "",
+    "original_answer": "",
+    "topic": "algebra",
+    "intent": "explanation"
   }
 ]

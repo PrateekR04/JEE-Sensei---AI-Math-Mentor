@@ -43,11 +43,11 @@
   "default": {
     "user_id": "default",
     "created": "2026-01-16T17:49:17.733274",
-    "last_active": "2026-01-17T17:28:08.119294",
+    "last_active": "2026-01-17T22:52:08.975806",
     "topics": {
       "algebra": {
-        "attempts": 25,
-        "correct": 25,
+        "attempts": 27,
+        "correct": 27,
         "intents": {
           "equation": {
             "attempts": 16,
@@ -56,18 +56,22 @@
           "direct_calculation": {
             "attempts": 9,
             "correct": 9
+          },
+          "explanation": {
+            "attempts": 2,
+            "correct": 2
           }
         },
-        "last_attempt": "2026-01-17T17:08:16.127174",
-        "avg_confidence": 0.7841753551667493
+        "last_attempt": "2026-01-17T22:52:08.975809",
+        "avg_confidence": 0.7927549584877307
       },
       "calculus": {
-        "attempts": 8,
-        "correct": 8,
+        "attempts": 12,
+        "correct": 12,
         "intents": {
           "derivative": {
-            "attempts": 5,
-            "correct": 5
+            "attempts": 9,
+            "correct": 9
           },
           "integral": {
             "attempts": 1,
@@ -78,8 +82,8 @@
             "correct": 2
           }
         },
-        "last_attempt": "2026-01-17T17:28:08.119297",
-        "avg_confidence": 0.7125
+        "last_attempt": "2026-01-17T22:17:00.130264",
+        "avg_confidence": 0.7583333333333333
       },
       "linear_algebra": {
         "attempts": 1,
@@ -120,10 +124,10 @@
     },
     "explanation_depth": "medium",
     "preferred_method": null,
-    "total_problems": 38,
-    "total_correct": 38,
-    "streak": 38,
-    "max_streak": 38,
+    "total_problems": 44,
+    "total_correct": 44,
+    "streak": 44,
+    "max_streak": 44,
     "weak_topics": [],
     "frequent_errors": [],
     "sessions": [],

@@ -568,9 +568,65 @@ def render_user_message(message: str):
 def render_assistant_message(message: str, show_label: bool = True):
     """Render an assistant message bubble."""
     import re
+    
+    # Unicode superscripts for math formatting
+    superscripts = {'0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                   '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+                   '-': '⁻', '+': '⁺', '(': '⁽', ')': '⁾', 'n': 'ⁿ'}
+    
+    def to_superscript(text):
+        return ''.join(superscripts.get(c, c) for c in str(text))
+    
+    # HTML template for fraction-style derivative: d/dx or dA/dx
+    def make_derivative_html(func, var):
+        if func:
+            return f'<span style="display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-style:italic;line-height:1;"><span style="border-bottom:1px solid currentColor;padding:0 2px;">𝑑{func}</span><span style="padding:0 2px;">𝑑{var}</span></span>'
+        else:
+            return f'<span style="display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-style:italic;line-height:1;"><span style="border-bottom:1px solid currentColor;padding:0 2px;">𝑑</span><span style="padding:0 2px;">𝑑{var}</span></span>'
+    
+    # HTML template for integral symbol
+    def make_integral_html():
+        return '<span style="font-size:1.3em;font-style:italic;">∫</span>'
+    
+    html_message = message
+    
+    # Remove backticks (code formatting) - show math directly
+    html_message = re.sub(r'`([^`]+)`', r'\1', html_message)
+    
+    # Format derivative notation: dA/dx -> fraction HTML (derivative of A with respect to x)
+    # Match patterns like dA/dx, dV/dr, dy/dx
+    html_message = re.sub(r'\bd([A-Za-z])/d([a-zA-Z])\b', lambda m: make_derivative_html(m.group(1), m.group(2)), html_message)
+    
+    # Also match simple d/dx pattern
+    html_message = re.sub(r'\bd/d([a-zA-Z])\b', lambda m: make_derivative_html('', m.group(1)), html_message)
+    
+    # Format integral symbol: integrate, integral, ∫ -> proper integral symbol
+    html_message = html_message.replace('∫', make_integral_html())
+    
+    # Math formatting: x**2 -> x², x^3 -> x³, also handle with parentheses like (n-1)
+    html_message = re.sub(r'([a-zA-Z])\*\*(\d+)', lambda m: m.group(1) + to_superscript(m.group(2)), html_message)
+    html_message = re.sub(r'([a-zA-Z])\^(\d+)', lambda m: m.group(1) + to_superscript(m.group(2)), html_message)
+    html_message = re.sub(r'([a-zA-Z])\^\(([^)]+)\)', lambda m: m.group(1) + to_superscript('(' + m.group(2) + ')'), html_message)
+    
+    # Remove multiplication signs with spaces: 4 * p³ -> 4p³
+    html_message = re.sub(r'(\d+)\s*\*\s*([a-zA-Z])', r'\1\2', html_message)
+    
+    # Remove multiplication signs without spaces: 3*x -> 3x
+    html_message = re.sub(r'(\d)\*([a-zA-Z])', r'\1\2', html_message)
+    
+    # Replace sqrt with √
+    html_message = html_message.replace('sqrt(', '√(')
+    
+    # Clean up * between coefficient and variable in expressions like "= 4 * p"
+    html_message = re.sub(r'=\s*(\d+)\s*\*\s*([a-zA-Z])', r'= \1\2', html_message)
+    
+    # Remove [Source: ...] citations from display
+    html_message = re.sub(r'\s*\[Source:\s*[^\]]+\]', '', html_message)
+    
     # Convert markdown to HTML
     # Bold: **text** -> <strong>text</strong>
-    html_message = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', message)
+    html_message = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', html_message)
+    
     # Line breaks
     html_message = html_message.replace('\n\n', '<br><br>').replace('\n', '<br>')
     
@@ -708,6 +764,8 @@ def main():
         st.session_state.processing_complete = False
     if 'current_result' not in st.session_state:
         st.session_state.current_result = None
+    if 'input_key' not in st.session_state:
+        st.session_state.input_key = 0  # Used to clear input field
     
     # Sidebar
     with st.sidebar:
@@ -780,7 +838,7 @@ def main():
                 height=70,
                 placeholder="Ask a math question... (e.g., What is the square root of 144?)",
                 label_visibility="collapsed",
-                key="text_input"
+                key=f"text_input_{st.session_state.input_key}"
             )
         elif input_mode == "🖼️ Image":
             uploaded_file = st.file_uploader(
@@ -891,8 +949,9 @@ def main():
                             'content': f"Sorry, an error occurred: {str(e)}"
                         })
                 
-                # Clear pending input
+                # Clear pending input and increment key to clear text area
                 st.session_state.pending_input = None
+                st.session_state.input_key += 1  # Rotate key to clear text input
                 st.rerun()
         
         with col2:

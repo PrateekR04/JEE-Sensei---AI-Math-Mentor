@@ -249,7 +249,9 @@ Formula Used: {compute_result.get('formula', 'N/A')}
 Retrieved Knowledge:
 {context}
 
-Provide a clear step-by-step explanation with citations."""
+Provide a clear step-by-step explanation with citations.
+At the END, you MUST write: "The final answer is: [probability as fraction and decimal]"
+For example: "The final answer is: 1/4 (0.25 or 25%)\""""
 
         try:
             working = self.llm.generate(prompt, temperature=0.1)

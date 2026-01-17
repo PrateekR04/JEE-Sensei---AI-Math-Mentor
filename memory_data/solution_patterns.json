@@ -71,9 +71,9 @@
     "problem_structure": "find the derivative of x\u00b2 + Nx\n",
     "solution_approach": "Step 1: Identify the terms in the given expression, which are x\u00b2 and 3x. We need to find the derivative of each term separately. Step 2: Apply the SUM/DIFFERENCE RULE, which states that the derivative of a sum is the sum of the derivatives. This means we will find the derivatives of x\u00b2 and 3x and then add them. Step 3: Find the derivative of x\u00b2 using the POWER RULE, which states that d/dx (x^n) = n * x^(n-1). For x\u00b2, n = 2, so the derivative is 2 * x^(2-1) = 2x. Step 4: Find the derivative of 3x using the POWER RULE and the CONSTANT MULTIPLE RULE. The derivative of x is 1, and since 3 is a constant, the derivative of 3x is 3 * 1 = 3. Step 5: Apply the SUM/DIFFERENCE RULE to find the derivative of the entire expression, which is the sum of the derivatives of x\u00b2 and 3x, resulting in 2x + 3.",
     "equations": [],
-    "success_count": 3,
+    "success_count": 4,
     "created": "2026-01-16T17:55:00.704658",
-    "last_used": "2026-01-16T21:06:55.115262"
+    "last_used": "2026-01-17T22:08:54.931994"
   },
   {
     "id": "pat_000006",
@@ -389,5 +389,36 @@
     "success_count": 1,
     "created": "2026-01-17T17:28:08.116743",
     "last_used": "2026-01-17T17:28:08.116745"
+  },
+  {
+    "id": "pat_000028",
+    "template_name": "derivative",
+    "topic": "calculus",
+    "intent": "derivative",
+    "keywords": [
+      "find",
+      "derivative"
+    ],
+    "problem_structure": "find the derivative of V^N + Np",
+    "solution_approach": "Step 1: To find the derivative of the given expression `p\u2074 + 5p`, we need to apply the SUM/DIFFERENCE RULE, which states that the derivative of a sum is the sum of the derivatives. So, we can break down the expression into two separate terms: `p\u2074` and `5p`. Step 2: Next, we apply the POWER RULE to the first term `p\u2074`. The POWER RULE states that if we have a term like `x^n`, its derivative is `n * x^(n-1)`. In this case, `n` is 4, so the derivative of `p\u2074` is `4 * p^(4-1) = 4 * p\u00b3`. Step 3: For the second term `5p`, we apply the CONSTANT MULTIPLE RULE, which states that the derivative of a constant times a function is the constant times the derivative of the function. So, the derivative of `5p` is `5 * d/dp (p)`. Using the POWER RULE again, we find that the derivative of `p` is `1 * p^(1-1) = 1`. Therefore, the derivative of `5p` is `5 * 1 = 5`. Step 4: Finally, we combine the derivatives of the two terms using the SUM/DIFFERENCE RULE: `d/dp (p\u2074 + 5p) = d/dp (p\u2074) + d/dp (5p) = 4 * p\u00b3 + 5`.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-17T22:17:00.127352",
+    "last_used": "2026-01-17T22:17:00.127355"
+  },
+  {
+    "id": "pat_000029",
+    "template_name": "derivative",
+    "topic": "algebra",
+    "intent": "explanation",
+    "keywords": [
+      "derivative"
+    ],
+    "problem_structure": "explain chain rule of derivatives?",
+    "solution_approach": "The chain rule of derivatives is a fundamental concept in calculus that helps us find the derivative of a composite function. A composite function is a function of the form f(g(x)), where f and g are two separate functions.\n\n**What is the Chain Rule?**\n\nThe chain rule states that the derivative of a composite function f(g(x)) is given by the product of the derivatives of the individual functions, i.e., f'(g(x)) and g'(x). Mathematically, this can be expressed as:\n\nd/dx (f(g(x))) = f'(g(x)) * g'(x) [Source: Differentiation Rules (JEE Level)]\n\nor, in a more intuitive notation:\n\ndy/dx = dy/du \u00d7 du/dx\n\nwhere u = g(x) and y = f(u).\n\n**How Does the Chain Rule Work?**\n\nTo understand the chain rule, let's consider a simple example. Suppose we want to find the derivative of the function sin(x^2). We can think of this function as a composite function, where the outer function is sin(u) and the inner function is u = x^2.\n\nUsing the chain rule, we can write:\n\nd/dx (sin(x^2)) = d/du (sin(u)) * d/du (x^2)\n\nNow, we know that the derivative of sin(u) with respect to u is cos(u), and the derivative of x^2 with respect to x is 2x. Therefore, we can substitute these values into the equation above:\n\nd/dx (sin(x^2)) = cos(x^2) * 2x\n\nThis is the final answer, which shows that the derivative of sin(x^2) is indeed cos(x^2) * 2x.\n\n**Example:**\n\nLet's work out another example to illustrate the chain rule. Suppose we want to find the derivative of the function e^(3x). We can think of this function as a composite function, where the outer function is e^u and the inner function is u = 3x.\n\nUsing the chain rule, we can write:\n\nd/dx (e^(3x)) = d/du (e^u) * d/du (3x)\n\nNow, we know that the derivative of e^u with respect to u is e^u, and the derivative of 3x with respect to x is 3. Therefore, we can substitute these values into the equation above:\n\nd/dx (e^(3x)) = e^(3x) * 3\n\nThis simplifies to:\n\nd/dx (e^(3x)) = 3e^(3x)\n\n**Conclusion:**\n\nIn conclusion, the chain rule is a powerful tool for finding the derivatives of composite functions. By applying the chain rule, we can break down complex functions into simpler components and find their derivatives more easily. Remember to always identify the outer and inner functions, and then apply the chain rule formula: dy/dx = dy/du \u00d7 du/dx.\n\nI hope this explanation helps you understand the chain rule of derivatives! [Source: Differentiation Rules (JEE Level)]",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-17T22:52:08.973071",
+    "last_used": "2026-01-17T22:52:08.973072"
   }
 ]

@@ -28,6 +28,7 @@ from sympy.parsing.sympy_parser import (
 from llm.groq_client import GroqClient
 from rag.retriever import KnowledgeRetriever
 from agents.calculus_parser_agent import CalculusParserAgent
+from utils.math_formatter import format_answer, format_math_expression
 
 
 # Safe parsing transformations
@@ -290,16 +291,61 @@ class CalculusSolverAgent:
             }
         
         if not compute_result["success"]:
-            return {
-                "answer": "Computation failed",
-                "working": f"Error: {compute_result['error']}",
-                "sources": [r["source"] for r in retrieved],
-                "citations": [],
-                "tool_calls": [],
-                "has_context": True,
-                "has_sufficient_context": True,
-                "error": compute_result["error"]
-            }
+            # SymPy can't compute directly - try using LLM for word problems
+            context_parts = [f"[Source: {r['source']}]\n{r['content']}" for r in retrieved]
+            context = "\n\n".join(context_parts)
+            
+            fallback_prompt = f"""Solve this {calc_type} problem step-by-step.
+Use ONLY the methods from the retrieved knowledge.
+
+Problem: {problem_text}
+
+Retrieved Knowledge:
+{context}
+
+Solve the problem showing your working. At the very end, you MUST write exactly:
+"The final answer is: [your answer here]"
+
+For example: "The final answer is: x = 25 meters, y = 25 meters" or "The final answer is: 625 square meters"
+"""
+
+            try:
+                working = self.llm.generate(fallback_prompt, temperature=0.1)
+                
+                # Try to extract answer from the LLM response
+                # Look for "The final answer is:" pattern first
+                final_answer_match = re.search(r'The final answer is[:\s]+([^\n]+)', working, re.IGNORECASE)
+                if final_answer_match:
+                    extracted_answer = final_answer_match.group(1).strip().rstrip('.')
+                else:
+                    # Fallback: look for any "answer is" pattern
+                    answer_match = re.search(r'(?:answer|result)\s+is[:\s]+([^\n]+)', working, re.IGNORECASE)
+                    if answer_match:
+                        extracted_answer = answer_match.group(1).strip().rstrip('.')
+                    else:
+                        extracted_answer = "See explanation"
+                
+                return {
+                    "answer": format_answer(extracted_answer),
+                    "working": format_math_expression(working),
+                    "sources": [r["source"] for r in retrieved],
+                    "citations": [],
+                    "tool_calls": [],
+                    "has_context": True,
+                    "has_sufficient_context": True,
+                    "solved_by": "LLM fallback"
+                }
+            except:
+                return {
+                    "answer": "Computation failed",
+                    "working": f"Error: {compute_result['error']}",
+                    "sources": [r["source"] for r in retrieved],
+                    "citations": [],
+                    "tool_calls": [],
+                    "has_context": True,
+                    "has_sufficient_context": True,
+                    "error": compute_result["error"]
+                }
         
         # Step 4: Generate explanation using LLM with RAG
         context_parts = [f"[Source: {r['source']}]\n{r['content']}" for r in retrieved]
@@ -332,8 +378,8 @@ Provide a clear step-by-step explanation with citations."""
             citations.append({"source": source, "verified": source in [r["source"] for r in retrieved]})
         
         return {
-            "answer": compute_result["result"],
-            "working": working,
+            "answer": format_answer(compute_result["result"]),
+            "working": format_math_expression(working),
             "sources": [r["source"] for r in retrieved],
             "citations": citations,
             "tool_calls": [{

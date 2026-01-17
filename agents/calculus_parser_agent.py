@@ -57,7 +57,8 @@ class CalculusParserAgent:
         if calc_type == "derivative":
             prefixes = ['find the derivative of', 'derivative of', 'differentiate', 
                        'd/dx', 'dy/dx', "find f'(x) for", "find f' of",
-                       "what is the derivative of", "calculate the derivative of"]
+                       "what is the derivative of", "calculate the derivative of",
+                       "find the derivative"]  # Added this
             # Sort by length descending to match longer prefixes first
             prefixes.sort(key=len, reverse=True)
             for prefix in prefixes:
@@ -93,6 +94,10 @@ class CalculusParserAgent:
         # Clean up
         text_clean = text_clean.strip()
         
+        # CRITICAL: Remove equation part (e.g., "= 0" or "= 5")
+        # For derivatives, we only need the expression, not the equation
+        text_clean = re.sub(r'\s*=\s*[-+]?\d*\.?\d*\s*$', '', text_clean)
+        
         # Normalize natural language math expressions
         nl_to_math = [
             (r'\bx\s+square\b', 'x**2'),
@@ -108,18 +113,30 @@ class CalculusParserAgent:
         for pattern, replacement in nl_to_math:
             text_clean = re.sub(pattern, replacement, text_clean, flags=re.IGNORECASE)
         
-        # Try to extract a math expression
-        # Look for common patterns
-        match = re.search(r'([a-zA-Z0-9+\-*/^().\s]+)', text_clean)
+        # Extract mathematical expression pattern
+        # Must contain at least one variable (x, y, t) and math symbols
+        # Match expressions like: x^3 + 8x + 16, sin(x), x**2 + 3*x, t^3 + 2t^2
+        # Use a more inclusive pattern that captures everything from first variable to end
+        match = re.search(r'((?:[0-9+\-*/^().\s]*[xyt])+[0-9+\-*/^().\sxyt]*)', text_clean)
         if match:
             expr = match.group(1).strip()
+            # Clean up any trailing/leading operators
+            expr = re.sub(r'^[+\-*/\s]+', '', expr)
+            expr = re.sub(r'[+\-*/\s]+$', '', expr)
             # Normalize
-            expr = re.sub(r'(\d)([a-zA-Z])', r'\1*\2', expr)  # 2x -> 2*x
+            expr = re.sub(r'(\d)([xyt])', r'\1*\2', expr)  # 8x -> 8*x
+            expr = re.sub(r'([xyt])(\d)', r'\1**\2', expr)  # x3 -> x**3 (common typo)
             expr = expr.replace('^', '**')  # ^ -> **
             expr = expr.replace(' ', '')
-            return expr
+            if expr:
+                return expr
         
-        return text_clean
+        # Fallback: try a more general extraction
+        expr = text_clean.strip()
+        expr = re.sub(r'(\d)([xyt])', r'\1*\2', expr)
+        expr = expr.replace('^', '**')
+        expr = expr.replace(' ', '')
+        return expr
     
     def _extract_variable(self, text: str, expression: str) -> str:
         """

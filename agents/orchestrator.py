@@ -493,6 +493,72 @@ EXPLANATION:
                         "error": str(e)
                     }
             
+            # Handle EXPLANATION queries (concept questions like "What is chain rule?")
+            if intent == "explanation":
+                print("📚 Handling concept explanation question...")
+                
+                # Use retriever to get relevant knowledge
+                from rag.retriever import KnowledgeRetriever
+                retriever = KnowledgeRetriever()
+                relevant_docs = retriever.retrieve(user_input, k=5)
+                
+                # Build context from RAG
+                context = "\n".join([doc.get("content", "") for doc in relevant_docs]) if relevant_docs else ""
+                sources = [doc.get("source", "knowledge_base") for doc in relevant_docs] if relevant_docs else []
+                
+                # Use LLM to explain the concept
+                from llm.groq_client import GroqClient
+                llm = GroqClient(model="llama-3.3-70b-versatile")
+                
+                prompt = f"""You are a helpful JEE math tutor. Answer this concept/explanation question.
+
+Question: {user_input}
+
+Relevant Knowledge from textbooks:
+{context}
+
+Instructions:
+1. Explain the concept clearly and thoroughly
+2. Cite your sources using [Source: filename] format where applicable
+3. If the question asks for an example, provide a clear worked example
+4. Use proper mathematical notation
+5. Make it easy to understand for a student
+
+Provide your explanation:"""
+
+                try:
+                    response = llm.generate(prompt, temperature=0.3)
+                    
+                    trace.append({"agent": "ConceptExplainer", "output": {"response": response[:200] + "..."}})
+                    
+                    return {
+                        "answer": "See explanation below",
+                        "explanation": response,
+                        "confidence": 0.9 if relevant_docs else 0.75,
+                        "sources": sources,
+                        "citations": [],
+                        "trace": trace,
+                        "status": "success",
+                        "key_concepts": [],
+                        "difficulty": "medium",
+                        "verification_steps": [],
+                        "is_correct": True,
+                        "strict_rag_compliant": bool(relevant_docs),
+                        "intent": intent,
+                        "subject": subject
+                    }
+                    
+                except Exception as e:
+                    return {
+                        "answer": "Error generating explanation",
+                        "explanation": f"An error occurred: {str(e)}",
+                        "confidence": 0.0,
+                        "sources": [],
+                        "trace": trace,
+                        "status": "error",
+                        "error": str(e)
+                    }
+            
             # Step 3: Select solver based on intent
             solver, solver_name = self._select_solver(route)
             print(f"🔧 Solving with {solver_name} (intent: {intent})...")

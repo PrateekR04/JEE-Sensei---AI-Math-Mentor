@@ -35,6 +35,23 @@ class RouterAgent:
         """
         text = problem_text.lower()
         
+        # EXPLANATION/CONCEPT QUESTIONS - detect FIRST before math operations
+        # These are "what is X?" or "explain X" questions about concepts, not computations
+        explanation_starters = ['what is the', 'what is a', 'explain', 'define', 'describe', 'how does', 'why does', 'what are']
+        concept_keywords = ['rule', 'theorem', 'formula', 'law', 'method', 'concept', 'definition', 'principle', 'technique']
+        
+        is_explanation_question = any(text.startswith(es) or es in text for es in explanation_starters)
+        has_concept_keyword = any(ck in text for ck in concept_keywords)
+        has_example_request = 'example' in text or 'explain with' in text
+        
+        # If it's asking about a concept/rule (not computing something), route to explanation
+        if (is_explanation_question and (has_concept_keyword or has_example_request)):
+            return "explanation"
+        
+        # Also catch pure definition questions like "what is chain rule"
+        if text.startswith('what is') and any(ck in text for ck in concept_keywords):
+            return "explanation"
+        
         # System of equations: multiple '=' or contains "and" with equations
         equals_count = text.count('=')
         has_and = ' and ' in text
@@ -43,10 +60,16 @@ class RouterAgent:
         if equals_count >= 2 or (equals_count >= 1 and has_and) or has_simultaneous:
             return "system_of_equations"
         
-        # Derivative detection
+        # Derivative detection - but NOT if it's an explanation question
         derivative_keywords = ['derivative', 'differentiate', 'd/dx', 'dy/dx', "f'(x)", "f'"]
         if any(kw in text for kw in derivative_keywords):
-            return "derivative"
+            # Check if it's a computation (has expression to differentiate)
+            has_expression = 'of ' in text and ('x' in text or any(c.isdigit() for c in text))
+            # "find derivative of x^2" is computation, "what is derivative" is explanation
+            if has_expression and not is_explanation_question:
+                return "derivative"
+            elif is_explanation_question:
+                return "explanation"
         
         # Integral detection
         integral_keywords = ['integral', 'integrate', 'integration', '∫', 'antiderivative']
