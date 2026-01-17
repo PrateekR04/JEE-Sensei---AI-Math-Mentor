@@ -1,0 +1,65 @@
+Percentages
+
+Definition:
+A percentage is a number expressed as a fraction of 100.
+Symbol: %
+Example: 50% means 50/100 = 0.5
+
+Converting Percentages:
+Percentage to Decimal: Divide by 100
+25% = 25/100 = 0.25
+75% = 0.75
+100% = 1.0
+150% = 1.5
+
+Decimal to Percentage: Multiply by 100
+0.35 = 35%
+0.8 = 80%
+1.25 = 125%
+
+Fraction to Percentage: Divide, then multiply by 100
+1/4 = 0.25 = 25%
+3/5 = 0.6 = 60%
+2/3 = 0.666... = 66.67%
+
+Finding Percentage of a Number:
+Formula: (Percentage/100) × Number
+Example: 20% of 80
+= (20/100) × 80
+= 0.20 × 80
+= 16
+
+Common Percentages to Memorize:
+10% = 1/10 = 0.1
+20% = 1/5 = 0.2
+25% = 1/4 = 0.25
+33.33% = 1/3 ≈ 0.333
+50% = 1/2 = 0.5
+66.67% = 2/3 ≈ 0.667
+75% = 3/4 = 0.75
+100% = 1
+
+Percentage Increase:
+Formula: ((New - Original) / Original) × 100
+Example: Price increased from 50 to 60
+= ((60-50)/50) × 100 = (10/50) × 100 = 20% increase
+
+Percentage Decrease:
+Formula: ((Original - New) / Original) × 100
+Example: Price decreased from 80 to 60
+= ((80-60)/80) × 100 = (20/80) × 100 = 25% decrease
+
+Finding Original Value:
+If X is P% of original, then Original = X / (P/100)
+Example: 30 is 25% of what number?
+= 30 / 0.25 = 120
+
+Percentage Problems:
+1. What is 15% of 200?
+   = 0.15 × 200 = 30
+
+2. 45 is what percent of 180?
+   = (45/180) × 100 = 25%
+
+3. 60 is 40% of what number?
+   = 60 / 0.40 = 150

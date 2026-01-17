@@ -1,0 +1,5 @@
+Common Probability Mistakes
+
+Forgetting intersection in union  
+Wrong sample space  
+Using permutation instead of combination

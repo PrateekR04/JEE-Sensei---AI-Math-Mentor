@@ -1,0 +1,26 @@
+TOPIC: Inverse of a Matrix (JEE Level)
+
+Inverse of a matrix A is denoted by A⁻¹ such that:
+AA⁻¹ = A⁻¹A = I
+
+A matrix has an inverse only if:
+det(A) ≠ 0
+
+Formula for inverse of 2×2 matrix:
+
+If A = [ a  b ]
+        [ c  d ]
+
+Then,
+A⁻¹ = (1/det(A)) * [  d  -b ]
+                   [ -c   a ]
+
+where det(A) = ad - bc
+
+Properties:
+(A⁻¹)⁻¹ = A
+(AB)⁻¹ = B⁻¹A⁻¹
+(Aᵀ)⁻¹ = (A⁻¹)ᵀ
+
+Used to solve system of equations:
+AX = B  →  X = A⁻¹B

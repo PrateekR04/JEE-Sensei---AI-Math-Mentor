@@ -1,0 +1,21 @@
+TOPIC: Rank of a Matrix (JEE Level)
+
+Rank of a matrix is the maximum number of linearly independent rows or columns.
+
+Methods to find rank:
+- Reduce matrix to row echelon form
+- Count number of non-zero rows
+
+For a square matrix A:
+- If det(A) ≠ 0 → rank(A) = order of matrix
+- If det(A) = 0 → rank(A) < order
+
+Applications:
+- Solving linear equations
+- Checking consistency of system
+- Finding inverse
+
+For system AX = B:
+- Unique solution if rank(A) = rank([A|B]) = n
+- Infinite solutions if rank(A) = rank([A|B]) < n
+- No solution if rank(A) ≠ rank([A|B])

@@ -1,0 +1,39 @@
+# Core dependencies
+streamlit>=1.31.0
+numpy>=1.24.0
+pillow>=10.0.0
+
+# OCR - Using EasyOCR
+easyocr>=1.7.0
+torch>=2.0.0
+torchvision>=0.15.0
+
+# ASR
+openai-whisper>=20231117
+
+# Audio processing
+soundfile>=0.12.1
+
+# Additional utilities
+opencv-python>=4.8.0
+
+# RAG System
+sentence-transformers>=2.2.0
+faiss-cpu>=1.7.0
+langchain>=0.1.0
+langchain-community>=0.0.20
+
+# Math Tools
+sympy>=1.12
+
+# LLM - Google Gemini (legacy)
+google-generativeai>=0.3.0
+
+# LLM - Groq (primary)
+groq>=0.4.0
+
+# Optional: Uncomment for PaddleOCR fallback
+# Note: PaddleOCR may have compatibility issues with Python 3.12
+# paddleocr>=2.7.0
+# paddlepaddle>=2.5.0
+python-dotenv>=1.0.0

@@ -1,0 +1,90 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+venv_new/
+ENV/
+env/
+.venv/
+
+# Environment variables (IMPORTANT - contains API keys)
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+logs/
+
+# Local model cache (large files)
+models/
+
+# Test files (keeping tests/ folder, excluding root level test files)
+test_*.py
+verify_setup.py
+
+# Migration scripts (no longer needed)
+migrate_to_groq.py
+
+# Old setup/run scripts
+setup.sh
+run_app.sh
+
+# Pipenv files (using requirements.txt instead)
+Pipfile
+Pipfile.lock
+
+# Old documentation
+AGENT_STATUS.md
+GEMINI_SETUP.md
+
+# Memory data (optional - comment out if you want to persist solved problems)
+# memory_data/
+
+# Test cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Temporary files
+*.tmp
+*.temp

@@ -1,0 +1,92 @@
+Geometry Basics
+
+Points, Lines, and Angles:
+- Point: A location with no size
+- Line: Extends infinitely in both directions
+- Ray: Starts at a point and extends infinitely in one direction
+- Line Segment: A portion of a line with two endpoints
+
+Angles:
+- Acute angle: Less than 90°
+- Right angle: Exactly 90°
+- Obtuse angle: Between 90° and 180°
+- Straight angle: Exactly 180°
+- Reflex angle: Between 180° and 360°
+
+Complementary angles: Sum to 90°
+Supplementary angles: Sum to 180°
+
+Triangles:
+Types by sides:
+- Equilateral: All sides equal, all angles 60°
+- Isosceles: Two sides equal, two angles equal
+- Scalene: No sides equal
+
+Types by angles:
+- Acute: All angles < 90°
+- Right: One angle = 90°
+- Obtuse: One angle > 90°
+
+Sum of angles in a triangle = 180°
+
+Triangle Formulas:
+Area = (1/2) × base × height
+Perimeter = a + b + c
+
+Pythagorean Theorem (right triangles):
+a² + b² = c² (where c is hypotenuse)
+
+Common Pythagorean Triples:
+3, 4, 5 (3² + 4² = 9 + 16 = 25 = 5²)
+5, 12, 13
+8, 15, 17
+7, 24, 25
+
+Quadrilaterals:
+All have interior angles summing to 360°
+
+Rectangle:
+Area = length × width
+Perimeter = 2(length + width)
+
+Square:
+Area = side²
+Perimeter = 4 × side
+Diagonal = side × √2
+
+Parallelogram:
+Area = base × height
+
+Trapezoid:
+Area = (1/2) × (base1 + base2) × height
+
+Circle:
+π (pi) ≈ 3.14159 ≈ 22/7
+Circumference = 2πr = πd
+Area = πr²
+Diameter = 2 × radius
+
+Common Circle Values:
+r = 7: Circumference ≈ 44, Area ≈ 154
+r = 14: Circumference ≈ 88, Area ≈ 616
+r = 10: Circumference ≈ 62.8, Area ≈ 314
+
+3D Shapes:
+Cube:
+Volume = side³
+Surface Area = 6 × side²
+
+Rectangular Prism (Cuboid):
+Volume = length × width × height
+Surface Area = 2(lw + wh + lh)
+
+Sphere:
+Volume = (4/3)πr³
+Surface Area = 4πr²
+
+Cylinder:
+Volume = πr²h
+Surface Area = 2πr² + 2πrh
+
+Cone:
+Volume = (1/3)πr²h

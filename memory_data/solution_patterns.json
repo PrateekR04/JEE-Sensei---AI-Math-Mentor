@@ -1,0 +1,393 @@
+[
+  {
+    "id": "pat_000001",
+    "template_name": "linear_equation",
+    "topic": "algebra",
+    "intent": "equation",
+    "keywords": [
+      "solve"
+    ],
+    "problem_structure": "solve Nx - N = N",
+    "solution_approach": "Add 3, divide by 5",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-16T17:29:26.089948",
+    "last_used": "2026-01-16T17:29:26.089949"
+  },
+  {
+    "id": "pat_000002",
+    "template_name": "linear_equation",
+    "topic": "algebra",
+    "intent": "equation",
+    "keywords": [
+      "solve"
+    ],
+    "problem_structure": "solve Nx + N = N\n",
+    "solution_approach": "Step 1: Subtract 7 from both sides of the equation 3x + 7 = 22 to isolate the term with the variable (x). This helps to get rid of the constant term (+7) on the same side as the variable. So, we have: 3x + 7 - 7 = 22 - 7, which simplifies to 3x = 15. Step 2: Divide both sides by the coefficient of x (which is 3 in this case) to solve for x. This step uses the concept of inverse operations, where dividing by 3 is the inverse of multiplying by 3. So, we have: 3x / 3 = 15 / 3, which simplifies to x = 5. Step 3: Verify our solution by substituting x = 5 back into the original equation: 3(5) + 7 = 15 + 7 = 22. This confirms that our solution is correct.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-16T17:49:17.733558",
+    "last_used": "2026-01-16T17:49:17.733559"
+  },
+  {
+    "id": "pat_000003",
+    "template_name": "linear_equation",
+    "topic": "algebra",
+    "intent": "equation",
+    "keywords": [
+      "solve"
+    ],
+    "problem_structure": "solve Nx + N = N\n",
+    "solution_approach": "Step 1: To solve the equation 3x + 7 = 25, we need to isolate the variable x. This means we want to get x all by itself on one side of the equation. We can start by subtracting 7 from both sides of the equation, which keeps the equation balanced. This gives us 3x = 25 - 7, which simplifies to 3x = 18. Step 2: Now that we have 3x = 18, we need to get x by itself. To do this, we can divide both sides of the equation by 3, which is the coefficient of x. This gives us x = 18 / 3, which simplifies to x = 6. Step 3: To verify our answer, we can plug x = 6 back into the original equation to make sure it's true. We get 3(6) + 7 = 18 + 7 = 25, which confirms that our solution is correct.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-16T17:50:40.563739",
+    "last_used": "2026-01-16T17:50:40.563745"
+  },
+  {
+    "id": "pat_000004",
+    "template_name": "linear_equation",
+    "topic": "algebra",
+    "intent": "equation",
+    "keywords": [
+      "solve"
+    ],
+    "problem_structure": "solve x\u00b2 + Nx + N = N",
+    "solution_approach": "Step 1: Identify the given quadratic equation, which is x\u00b2 + 5x + 6 = 0. The goal is to find the values of x that satisfy this equation. Step 2: Recall the quadratic formula, x = (-b \u00b1 \u221a(b\u00b2 - 4ac)) / (2a), where a, b, and c are coefficients from the quadratic equation. In this case, a = 1, b = 5, and c = 6. Step 3: Calculate the discriminant, D = b\u00b2 - 4ac, which determines the nature of the roots. Here, D = 5\u00b2 - 4*1*6 = 25 - 24 = 1. Since D > 0, the equation has two real and distinct roots. Step 4: Apply the quadratic formula using the values of a, b, and c. This gives x = (-5 \u00b1 \u221a(5\u00b2 - 4*1*6)) / (2*1) = (-5 \u00b1 \u221a1) / 2. Step 5: Simplify the expression to find the two possible roots: x = (-5 + 1) / 2 = -4 / 2 = -2 and x = (-5 - 1) / 2 = -6 / 2 = -3.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-16T17:52:31.925552",
+    "last_used": "2026-01-16T17:52:31.925554"
+  },
+  {
+    "id": "pat_000005",
+    "template_name": "quadratic_equation",
+    "topic": "calculus",
+    "intent": "derivative",
+    "keywords": [
+      "find",
+      "derivative"
+    ],
+    "problem_structure": "find the derivative of x\u00b2 + Nx\n",
+    "solution_approach": "Step 1: Identify the terms in the given expression, which are x\u00b2 and 3x. We need to find the derivative of each term separately. Step 2: Apply the SUM/DIFFERENCE RULE, which states that the derivative of a sum is the sum of the derivatives. This means we will find the derivatives of x\u00b2 and 3x and then add them. Step 3: Find the derivative of x\u00b2 using the POWER RULE, which states that d/dx (x^n) = n * x^(n-1). For x\u00b2, n = 2, so the derivative is 2 * x^(2-1) = 2x. Step 4: Find the derivative of 3x using the POWER RULE and the CONSTANT MULTIPLE RULE. The derivative of x is 1, and since 3 is a constant, the derivative of 3x is 3 * 1 = 3. Step 5: Apply the SUM/DIFFERENCE RULE to find the derivative of the entire expression, which is the sum of the derivatives of x\u00b2 and 3x, resulting in 2x + 3.",
+    "equations": [],
+    "success_count": 3,
+    "created": "2026-01-16T17:55:00.704658",
+    "last_used": "2026-01-16T21:06:55.115262"
+  },
+  {
+    "id": "pat_000006",
+    "template_name": "age_problem",
+    "topic": "linear_algebra",
+    "intent": "system_of_equations",
+    "keywords": [
+      "find"
+    ],
+    "problem_structure": "V father is N years older than his son. in N years, the father will be twice as old as the son. find",
+    "solution_approach": "Step 1: Let's start by defining the problem. We know that a father is 30 years older than his son. We can write this as an equation: f = s + 30, where f is the father's age and s is the son's age. Step 2: Next, we are given that in 5 years, the father will be twice as old as the son. We can write this as another equation: f + 5 = 2*(s + 5). Step 3: Now, we simplify the second equation by multiplying out the right side: f + 5 = 2s + 10. Then, we subtract 5 from both sides to get: f = 2s + 5. Step 4: Since both equations are equal to f, we can set them equal to each other: s + 30 = 2s + 5. Step 5: To solve for s, we need to get all the s terms on one side. We subtract s from both sides: 30 = s + 5. Then, we subtract 5 from both sides: 25 = s. Step 6: Now that we have the value of s, we can substitute it back into one of the original equations to find f. Using the first equation: f = s + 30, we get f = 25 + 30, so f = 55.",
+    "equations": [
+      "f = s + 30",
+      "f + 5 = 2*(s + 5)"
+    ],
+    "success_count": 1,
+    "created": "2026-01-16T17:58:04.914845",
+    "last_used": "2026-01-16T17:58:04.914846"
+  },
+  {
+    "id": "pat_000007",
+    "template_name": "age_problem",
+    "topic": "algebra",
+    "intent": "equation",
+    "keywords": [
+      "find"
+    ],
+    "problem_structure": "V father is N years older than his son. in N years, the father will be twice as old as the son. find",
+    "solution_approach": "**From Memory:** This problem is very similar to one I've solved before.\n\nStep 1: Let's start by defining the problem. We know that a father is 30 years older than his son. We can write this as an equation: f = s + 30, where f is the father's age and s is the son's age. Step 2: Next, we are given that in 5 years, the father will be twice as old as the son. We can write this as another equation: f + 5 = 2*(s + 5). Step 3: Now, we simplify the second equation by multiplying out the right side: f + 5 = 2s + 10. Then, we subtract 5 from both sides to get: f = 2s + 5. Step 4: Since both equations are equal to f, we can set them equal to each other: s + 30 = 2s + 5. Step 5: To solve for s, we need to get all the s terms on one side. We subtract s from both sides: 30 = s + 5. Then, we subtract 5 from both sides: 25 = s. Step 6: Now that we have the value of s, we can substitute it back into one of the original equations to find f. Using the first equation: f = s + 30, we get f = 25 + 30, so f = 55.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-16T18:02:56.672959",
+    "last_used": "2026-01-16T18:02:56.672961"
+  },
+  {
+    "id": "pat_000008",
+    "template_name": "linear_equation",
+    "topic": "algebra",
+    "intent": "equation",
+    "keywords": [
+      "solve",
+      "equation"
+    ],
+    "problem_structure": "solve the equation Nx + N = N",
+    "solution_approach": "Step 1: To solve the equation 5x + 8 = 23, we need to isolate the term with the variable (x). We can do this by subtracting 8 from both sides of the equation. This is because when we add or subtract the same value to both sides of an equation, the equation remains balanced. So, subtracting 8 from both sides gives us: 5x = 23 - 8, which simplifies to 5x = 15. Step 2: Now that we have isolated the term with the variable, we need to solve for x. To do this, we divide both sides of the equation by the coefficient of x, which is 5. This is the inverse operation of multiplication, and it helps us to 'get rid' of the coefficient. So, dividing both sides by 5 gives us: x = 15 / 5, which simplifies to x = 3. Step 3: To verify our solution, we can substitute x = 3 back into the original equation. This helps us to check if our solution is correct. Substituting x = 3 into the equation 5x + 8 = 23 gives us: 5(3) + 8 = 15 + 8 = 23, which confirms that our solution is correct.",
+    "equations": [],
+    "success_count": 6,
+    "created": "2026-01-16T21:06:11.892646",
+    "last_used": "2026-01-17T16:51:59.163579"
+  },
+  {
+    "id": "pat_000009",
+    "template_name": "quadratic_equation",
+    "topic": "calculus",
+    "intent": "integral",
+    "keywords": [
+      "find",
+      "ratio"
+    ],
+    "problem_structure": "find the integration of V^N",
+    "solution_approach": "Step 1: Identify the function to be integrated, which is x^2. This is the function we want to find the integral of. Step 2: Apply the POWER RULE of integration, which states that \u222b x^n dx = x^(n+1)/(n+1) + C, where n \u2260 -1. This rule helps us integrate functions of the form x raised to a power. Step 3: Substitute n = 2 into the POWER RULE formula: \u222b x^2 dx = x^(2+1)/(2+1) + C. This means we add 1 to the exponent and divide by the new exponent. Step 4: Simplify the expression: \u222b x^2 dx = x^3/3 + C. This gives us the final integral of x^2.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-16T21:07:20.518397",
+    "last_used": "2026-01-16T21:07:20.518402"
+  },
+  {
+    "id": "pat_000010",
+    "template_name": "probability",
+    "topic": "probability",
+    "intent": "probability",
+    "keywords": [
+      "probability"
+    ],
+    "problem_structure": "what is the probability of an ace in V deck of cards ?",
+    "solution_approach": "Step 1: First, let's identify the total number of cards in a standard deck. We know that a standard deck has 52 cards. Step 2: Next, we need to determine the number of aces in the deck. Since there are 4 suits and each suit has one ace, there are a total of 4 aces in the deck. Step 3: Now, we apply the formula for probability, which is the number of favorable outcomes divided by the total number of possible outcomes. In this case, the favorable outcome is drawing an ace, and the total possible outcomes are the total number of cards in the deck. Step 4: Using the formula P(Ace) = Number of aces / Total number of cards, we can substitute the values to get P(Ace) = 4/52. Step 5: Finally, we simplify the fraction 4/52 by dividing both the numerator and the denominator by their greatest common divisor, which is 4, to get P(Ace) = 1/13.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-16T21:39:52.598192",
+    "last_used": "2026-01-16T21:39:52.598214"
+  },
+  {
+    "id": "pat_000011",
+    "template_name": "probability",
+    "topic": "probability",
+    "intent": "probability",
+    "keywords": [
+      "probability"
+    ],
+    "problem_structure": "what is the probability of an ace of clubs in V deck of cards ?",
+    "solution_approach": "Step 1: First, let's identify the total number of cards in a standard deck, which is 52. Step 2: Next, we need to understand that there are 4 suits in a deck, and each suit has one ace, resulting in a total of 4 aces. Step 3: However, the question specifically asks for the probability of drawing the ace of clubs, not just any ace. Step 4: Since there's only one ace of clubs in the deck, we calculate the probability by taking the number of favorable outcomes (1 ace of clubs) and dividing it by the total number of possible outcomes (52 cards), resulting in a probability of 1/52.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-16T21:40:33.965976",
+    "last_used": "2026-01-16T21:40:33.965980"
+  },
+  {
+    "id": "pat_000012",
+    "template_name": "probability",
+    "topic": "probability",
+    "intent": "probability",
+    "keywords": [
+      "probability"
+    ],
+    "problem_structure": "what is the probability of drawing an ace of heart from V deck of cards?",
+    "solution_approach": "To calculate the probability of drawing an ace of hearts from a deck of cards, we need to understand the basic principles of probability. \n\nStep 1: Identify the total number of cards in a standard deck. \nAccording to [Source: probability_basics.txt], a standard deck contains 52 cards.\n\nStep 2: Determine the total number of aces in the deck. \nAs stated in [Source: probability_basics.txt], there are 4 aces in a standard deck (one for each suit: Hearts, Diamonds, Clubs, Spades).\n\nStep 3: Calculate the probability of drawing an ace from the deck. \nUsing the information from [Source: probability_basics.txt], the probability of drawing an ace (P(Ace)) is given by the formula: P(Ace) = 4/52 = 1/13.\n\nStep 4: Since we are looking for the probability of drawing a specific ace (the ace of hearts), we need to consider that there is only 1 ace of hearts in the deck. \nGiven that there are 4 aces and each has an equal chance of being drawn, the probability of drawing the ace of hearts is the probability of drawing any ace divided by the number of aces, but since the ace of hearts is a specific card, its probability is directly related to the total number of cards.\n\nStep 5: Calculate the probability of drawing the ace of hearts. \nSince there is only 1 ace of hearts in a deck of 52 cards, the probability is 1 (favorable outcome) out of 52 (total possible outcomes). However, the provided formula P(Ace) = 4/52 = 1/13 [Source: probability_basics.txt] gives the probability of drawing any ace, not specifically the ace of hearts. For the ace of hearts, considering it as a specific event within the aces, the calculation directly relates to the total number of cards and the specific card we're interested in.\n\nThe correct approach to finding the probability of drawing the ace of hearts involves recognizing it as a specific card out of the total. The formula provided in the retrieved knowledge for the probability of an ace (P(Ace) = 4/52) doesn't directly apply to finding the probability of a specific ace (like the ace of hearts) without considering the total number of cards and the fact that there's only one ace of hearts.\n\nGiven the information and correcting the approach: \n- The probability of drawing any ace is 4/52 (since there are 4 aces), which simplifies to 1/13 [Source: probability_basics.txt].\n- However, for the specific ace of hearts, since there's only 1 such card in a deck of 52, the probability calculation should reflect the chance of drawing this one specific card out of the total.\n\nThe computed result provided (1/13 \u2248 0.0769) seems to misinterpret the application of the formula for the specific case of drawing the ace of hearts. The correct calculation for the probability of drawing the ace of hearts, given it's a single specific card out of 52, should directly consider the total number of cards and that there's only one ace of hearts.\n\nThus, the probability of drawing the ace of hearts from a deck of cards, considering the correct interpretation and calculation, should be 1 (the ace of hearts) out of 52 (total cards), which is 1/52.\n\nThe confusion arises from the provided formula and computed result, which seems to mix the probability of drawing any ace with the specific case of the ace of hearts. The correct step-by-step calculation focuses on the specific card (ace of hearts) and the total number of cards in the deck. \n\nHowever, following the strict instruction to use only the formulas from the retrieved knowledge and given the context provided:\n- The probability of drawing an ace (any ace) is correctly given as 1/13 [Source: probability_basics.txt].\n- The question asks for the probability of the ace of hearts, which implies a specific outcome within the set of all aces.\n\nGiven this, and adhering strictly to the provided formulas without further derivation:\nThe probability calculation provided (1/13) seems to be a general probability for any ace, not specifically the ace of hearts. The correct approach, based on the information given and the formulas provided, should consider the specific case, but the direct calculation for the ace of hearts (1 out of 52) isn't directly derived from the given formulas without recognizing the specific card's probability as 1/52. \n\nFor clarity and following the instruction to use the provided formulas directly:\n- The probability of an ace (any) is 1/13 [Source: probability_basics.txt].\n- The implication for a specific ace (like the ace of hearts) involves recognizing it as one of the four aces, but the direct calculation from the given formulas isn't straightforward without considering the total number of cards and the specificity of the ace of hearts.\n\nThe final answer, based on the direct calculation for a specific card (ace of hearts) out of the total, should reflect the chance of drawing that one card, which is 1 out of 52, or 1/52. However, the provided computed result and formula suggest a different interpretation that doesn't directly apply to the specific case of the ace of hearts without considering the total number of cards and the uniqueness of the ace of hearts. \n\nTo correct and clarify, based on the standard probability calculation for a specific event (drawing the ace of hearts from a deck of 52 cards), the probability is 1/52, not directly derived from the provided formulas but from the basic principle of probability for a specific outcome. \n\nGiven the strict format and instruction to follow the provided formulas and the confusion in the explanation:\nThe correct calculation, following basic probability principles for a specific card, is 1/52, but this explanation aimed to clarify the step-by-step process based on the provided formulas and retrieved knowledge.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-17T11:34:36.868519",
+    "last_used": "2026-01-17T11:34:36.868522"
+  },
+  {
+    "id": "pat_000013",
+    "template_name": "quadratic_equation",
+    "topic": "algebra",
+    "intent": "equation",
+    "keywords": [
+      "find"
+    ],
+    "problem_structure": "find the solution of V^N + Nx + N = N",
+    "solution_approach": "**From Memory:** This problem is very similar to one I've solved before.\n\nStep 1: Identify the given quadratic equation, which is x\u00b2 + 5x + 6 = 0. The goal is to find the values of x that satisfy this equation. Step 2: Recall the quadratic formula, x = (-b \u00b1 \u221a(b\u00b2 - 4ac)) / (2a), where a, b, and c are coefficients from the quadratic equation. In this case, a = 1, b = 5, and c = 6. Step 3: Calculate the discriminant, D = b\u00b2 - 4ac, which determines the nature of the roots. Here, D = 5\u00b2 - 4*1*6 = 25 - 24 = 1. Since D > 0, the equation has two real and distinct roots. Step 4: Apply the quadratic formula using the values of a, b, and c. This gives x = (-5 \u00b1 \u221a(5\u00b2 - 4*1*6)) / (2*1) = (-5 \u00b1 \u221a1) / 2. Step 5: Simplify the expression to find the two possible roots: x = (-5 + 1) / 2 = -4 / 2 = -2 and x = (-5 - 1) / 2 = -6 / 2 = -3.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-17T11:38:26.468141",
+    "last_used": "2026-01-17T11:38:26.468143"
+  },
+  {
+    "id": "pat_000014",
+    "template_name": "quadratic_equation",
+    "topic": "algebra",
+    "intent": "equation",
+    "keywords": [
+      "find"
+    ],
+    "problem_structure": "find the solution of V^N + Nx + N = N",
+    "solution_approach": "**From Memory:** This problem is very similar to one I've solved before.\n\n**From Memory:** This problem is very similar to one I've solved before.\n\nStep 1: Identify the given quadratic equation, which is x\u00b2 + 5x + 6 = 0. The goal is to find the values of x that satisfy this equation. Step 2: Recall the quadratic formula, x = (-b \u00b1 \u221a(b\u00b2 - 4ac)) / (2a), where a, b, and c are coefficients from the quadratic equation. In this case, a = 1, b = 5, and c = 6. Step 3: Calculate the discriminant, D = b\u00b2 - 4ac, which determines the nature of the roots. Here, D = 5\u00b2 - 4*1*6 = 25 - 24 = 1. Since D > 0, the equation has two real and distinct roots. Step 4: Apply the quadratic formula using the values of a, b, and c. This gives x = (-5 \u00b1 \u221a(5\u00b2 - 4*1*6)) / (2*1) = (-5 \u00b1 \u221a1) / 2. Step 5: Simplify the expression to find the two possible roots: x = (-5 + 1) / 2 = -4 / 2 = -2 and x = (-5 - 1) / 2 = -6 / 2 = -3.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-17T15:36:38.442111",
+    "last_used": "2026-01-17T15:36:38.442115"
+  },
+  {
+    "id": "pat_000015",
+    "template_name": "derivative",
+    "topic": "calculus",
+    "intent": "derivative",
+    "keywords": [
+      "derivative"
+    ],
+    "problem_structure": "what is the derivative of V square?",
+    "solution_approach": "Step 1: Identify the function to be differentiated, which is x squared (x^2). This is the function we want to find the derivative of. Step 2: Apply the power rule of differentiation, which states that if a function is in the form x^n, its derivative is n*x^(n-1). Step 3: In our case, n = 2, because the function is x^2. So, using the power rule, we get the derivative as 2*x^(2-1). Step 4: Simplify the expression by calculating the exponent, which gives us 2*x^1. Step 5: Further simplify by recognizing that x^1 is just x, so the derivative of x^2 is 2*x, or 2x.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-17T15:43:12.513084",
+    "last_used": "2026-01-17T15:43:12.513087"
+  },
+  {
+    "id": "pat_000016",
+    "template_name": "derivative",
+    "topic": "calculus",
+    "intent": "derivative",
+    "keywords": [
+      "derivative"
+    ],
+    "problem_structure": "what is the derivative of V cube plus one ?",
+    "solution_approach": "Step 1: Identify the individual components of the expression, which is x^3 + 1, where x^3 is the first term and 1 is the second term. Step 2: Apply the POWER RULE to the first term, x^3, which states that d/dx (x^n) = n * x^(n-1), resulting in 3 * x^(3-1) = 3x^2. Step 3: Apply the CONSTANT RULE to the second term, 1, which states that the derivative of a constant is 0, resulting in 0. Step 4: Combine the derivatives using the SUM/DIFFERENCE RULE, which states that d/dx (f(x) \u00b1 g(x)) = d/dx (f(x)) \u00b1 d/dx (g(x)), resulting in 3x^2 + 0 = 3x^2.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-17T15:43:47.243658",
+    "last_used": "2026-01-17T15:43:47.243665"
+  },
+  {
+    "id": "pat_000017",
+    "template_name": null,
+    "topic": "algebra",
+    "intent": "direct_calculation",
+    "keywords": [],
+    "problem_structure": "what is the square root of N",
+    "solution_approach": "**Answer:** 1\n\n**Calculation:**\n1. Recall the definition of square root: The square root of a number x is a value y such that y\u00b2 = x.\n2. Apply the definition to the given problem: We need to find y such that y\u00b2 = 1.\n3. Use the property of square roots: \u221a1 = 1 (from the list of perfect squares).\n4. Therefore, the square root of 1 is 1.\n\n**Explanation:**\nThe concept of square roots is based on finding a value that, when multiplied by itself, gives the original number. In this case, the square root of 1 is 1 because 1\u00b2 = 1. This is a fundamental property of square roots, and it is essential to remember the perfect squares, including \u221a1 = 1, to simplify calculations and solve problems efficiently.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-17T16:06:24.167063",
+    "last_used": "2026-01-17T16:06:24.167067"
+  },
+  {
+    "id": "pat_000018",
+    "template_name": null,
+    "topic": "algebra",
+    "intent": "direct_calculation",
+    "keywords": [],
+    "problem_structure": "what is the square root of N",
+    "solution_approach": "**Answer:** 2\u221a2\n\n**Calculation:**\n1. We need to find the square root of 8.\n2. We can factor 8 as 8 = 4 \u00d7 2.\n3. Since 4 is a perfect square (\u221a4 = 2), we can rewrite \u221a8 as \u221a(4 \u00d7 2).\n4. Using the property of square roots, \u221a(a \u00d7 b) = \u221aa \u00d7 \u221ab, we can rewrite \u221a(4 \u00d7 2) as \u221a4 \u00d7 \u221a2.\n5. Simplifying further, we get 2\u221a2.\n\n**Explanation:**\nThe concept used here is the property of square roots, specifically the multiplication property, which states that \u221a(a \u00d7 b) = \u221aa \u00d7 \u221ab. This allows us to break down the square root of a product into the product of square roots. In this case, we factored 8 into 4 and 2, and then applied the property to simplify the expression. The result is 2\u221a2, which is the exact square root of 8.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-17T16:06:48.786773",
+    "last_used": "2026-01-17T16:06:48.786778"
+  },
+  {
+    "id": "pat_000019",
+    "template_name": null,
+    "topic": "algebra",
+    "intent": "direct_calculation",
+    "keywords": [],
+    "problem_structure": "what is the square root of -N",
+    "solution_approach": "**Answer:** \u221a(-8) = 2i\u221a2\n\n**Calculation:**\n1. The given problem is to find the square root of -8.\n2. We know that the square of any real number cannot be negative. However, we can use imaginary numbers to represent the square root of a negative number.\n3. To find the square root of -8, we can rewrite -8 as -1 * 8.\n4. Using the property of square roots, we can write \u221a(-8) = \u221a(-1 * 8) = \u221a(-1) * \u221a8.\n5. We know that \u221a(-1) is represented by the imaginary unit 'i', where i\u00b2 = -1.\n6. So, \u221a(-1) = i.\n7. Now, we need to find the square root of 8. We can factor 8 as 4 * 2, where 4 is a perfect square.\n8. Using the property of square roots, we can write \u221a8 = \u221a(4 * 2) = \u221a4 * \u221a2 = 2\u221a2.\n9. Therefore, \u221a(-8) = i * 2\u221a2 = 2i\u221a2.\n\n**Explanation:**\nThe concept used here is the representation of the square root of a negative number using imaginary numbers. In mathematics, the square of any real number is always non-negative (or zero). However, we can extend the real number system to include imaginary numbers, which can be used to represent the square root of a negative number. The imaginary unit 'i' is defined as the square root of -1, where i\u00b2 = -1. This allows us to represent the square root of any negative number using imaginary numbers.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-17T16:07:20.282243",
+    "last_used": "2026-01-17T16:07:20.282246"
+  },
+  {
+    "id": "pat_000020",
+    "template_name": null,
+    "topic": "algebra",
+    "intent": "direct_calculation",
+    "keywords": [],
+    "problem_structure": "what is the square root of -N",
+    "solution_approach": "**Answer:** i\n\n**Calculation:**\nThe square root of a number x is a value y such that y\u00b2 = x. To find the square root of -1, we need to find a value y such that y\u00b2 = -1. \nSince the square of any real number is non-negative, there is no real number that satisfies this equation. \nHowever, in complex numbers, we define i as the imaginary unit, which satisfies the equation i\u00b2 = -1.\nTherefore, the square root of -1 is i.\n\n**Explanation:**\nThe concept of square roots is extended to complex numbers when dealing with negative numbers. The square root of a negative number is an imaginary number, which is a concept in mathematics that extends the real number system to include numbers that can be expressed as a multiple of the imaginary unit i, where i\u00b2 = -1. This allows us to solve equations and perform calculations that involve negative numbers under the square root.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-17T16:07:38.101854",
+    "last_used": "2026-01-17T16:07:38.101857"
+  },
+  {
+    "id": "pat_000021",
+    "template_name": null,
+    "topic": "algebra",
+    "intent": "equation",
+    "keywords": [],
+    "problem_structure": "what is the square root of N",
+    "solution_approach": "**From Memory:** This problem is very similar to one I've solved before.\n\n**Answer:** 1\n\n**Calculation:**\n1. Recall the definition of square root: The square root of a number x is a value y such that y\u00b2 = x.\n2. Apply the definition to the given problem: We need to find y such that y\u00b2 = 1.\n3. Use the property of square roots: \u221a1 = 1 (from the list of perfect squares).\n4. Therefore, the square root of 1 is 1.\n\n**Explanation:**\nThe concept of square roots is based on finding a value that, when multiplied by itself, gives the original number. In this case, the square root of 1 is 1 because 1\u00b2 = 1. This is a fundamental property of square roots, and it is essential to remember the perfect squares, including \u221a1 = 1, to simplify calculations and solve problems efficiently.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-17T16:36:26.309548",
+    "last_used": "2026-01-17T16:36:26.309551"
+  },
+  {
+    "id": "pat_000022",
+    "template_name": null,
+    "topic": "algebra",
+    "intent": "direct_calculation",
+    "keywords": [],
+    "problem_structure": "what is square root of N ?",
+    "solution_approach": "**Answer:** 2\n\n**Calculation:**\n1. Recall the definition of square root: The square root of a number x is a value y such that y\u00b2 = x.\n2. Identify the given number: The number given is 4.\n3. Recall the perfect squares: From the list of perfect squares, we know that \u221a4 = 2, since 2\u00b2 = 4.\n\n**Explanation:**\nThe concept used here is the definition of square root and the recall of perfect squares. The square root of a number is a value that, when multiplied by itself, gives the original number. In this case, we know that 2 multiplied by itself equals 4, so the square root of 4 is 2. This is a basic property of square roots and is essential for more complex calculations involving radicals.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-17T16:41:18.703966",
+    "last_used": "2026-01-17T16:41:18.703971"
+  },
+  {
+    "id": "pat_000023",
+    "template_name": null,
+    "topic": "algebra",
+    "intent": "equation",
+    "keywords": [],
+    "problem_structure": "what is the square root of N ?",
+    "solution_approach": "**From Memory:** This problem is very similar to one I've solved before.\n\n**Answer:** 2\u221a2\n\n**Calculation:**\n1. We need to find the square root of 8.\n2. We can factor 8 as 8 = 4 \u00d7 2.\n3. Since 4 is a perfect square (\u221a4 = 2), we can rewrite \u221a8 as \u221a(4 \u00d7 2).\n4. Using the property of square roots, \u221a(a \u00d7 b) = \u221aa \u00d7 \u221ab, we can rewrite \u221a(4 \u00d7 2) as \u221a4 \u00d7 \u221a2.\n5. Simplifying further, we get 2\u221a2.\n\n**Explanation:**\nThe concept used here is the property of square roots, specifically the multiplication property, which states that \u221a(a \u00d7 b) = \u221aa \u00d7 \u221ab. This allows us to break down the square root of a product into the product of square roots. In this case, we factored 8 into 4 and 2, and then applied the property to simplify the expression. The result is 2\u221a2, which is the exact square root of 8.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-17T16:45:44.163680",
+    "last_used": "2026-01-17T16:45:44.163683"
+  },
+  {
+    "id": "pat_000024",
+    "template_name": "linear_equation",
+    "topic": "algebra",
+    "intent": "equation",
+    "keywords": [
+      "solve"
+    ],
+    "problem_structure": "solve Nx + N = N",
+    "solution_approach": "**From Memory:** This problem is very similar to one I've solved before.\n\nStep 1: Subtract 5 from both sides of the equation 2x + 5 = 7 to isolate the term with the variable. This gives us 2x = 2, because when we subtract 5 from both sides, the 5's cancel out. Step 2: Divide both sides of the equation 2x = 2 by 2 to solve for x. This gives us x = 1, because when we divide 2 by 2, we get 1. Step 3: Verify our solution by substituting x = 1 back into the original equation 2x + 5 = 7. When we plug in x = 1, we get 2(1) + 5 = 7, which is true.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-17T17:00:34.006705",
+    "last_used": "2026-01-17T17:00:34.006707"
+  },
+  {
+    "id": "pat_000025",
+    "template_name": "system_equations",
+    "topic": "algebra",
+    "intent": "direct_calculation",
+    "keywords": [],
+    "problem_structure": "V can complete V work in N days and V in N days. in how many days can they complete the work togethe",
+    "solution_approach": "**Answer:** 6\n\n**Calculation:**\n1. Identify the rates at which A and B work individually: A completes the work in 10 days, so A's rate = 1/10. B completes the work in 15 days, so B's rate = 1/15.\n2. Calculate the combined work rate when A and B work together: Combined rate = A's rate + B's rate = 1/10 + 1/15.\n3. Find a common denominator to add the fractions: The common denominator for 10 and 15 is 30. So, convert the fractions: 1/10 = 3/30 and 1/15 = 2/30.\n4. Add the fractions: 3/30 + 2/30 = 5/30.\n5. Simplify the fraction: 5/30 can be simplified to 1/6.\n6. The combined rate is 1/6, which means they complete the work together in 6 days.\n\n**Explanation:**\nThe concept here is based on the formula for combined work rates, which states that the combined rate is the sum of the individual rates. When A and B work together, their rates are added. The result gives the rate at which they complete the work together, which is then used to find the time required to complete the work. In this case, A and B together complete the work at a rate of 1/6, meaning they can complete the work together in 6 days.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-17T17:08:15.573224",
+    "last_used": "2026-01-17T17:08:15.573226"
+  },
+  {
+    "id": "pat_000026",
+    "template_name": "system_equations",
+    "topic": "algebra",
+    "intent": "direct_calculation",
+    "keywords": [],
+    "problem_structure": "V can complete V work in N days and V in N days. in how many days can they complete the work togethe",
+    "solution_approach": "**Answer:** 6\n\n**Calculation:**\n1. Identify the rates at which A and B work individually: A completes the work in 10 days, so A's rate = 1/10. B completes the work in 15 days, so B's rate = 1/15.\n2. Calculate the combined work rate when A and B work together: Combined rate = A's rate + B's rate = 1/10 + 1/15.\n3. Find a common denominator to add the fractions: The common denominator for 10 and 15 is 30. So, convert the fractions: 1/10 = 3/30 and 1/15 = 2/30.\n4. Add the fractions: 3/30 + 2/30 = 5/30.\n5. Simplify the fraction: 5/30 can be simplified to 1/6.\n6. The combined rate is 1/6, which means they complete the work together in 6 days.\n\n**Explanation:**\nThe concept here is based on the formula for combined work rates, which states that the combined rate is the sum of the individual rates. When A and B work together, their rates are added. The result gives the rate at which they complete the work together, which is then used to find the time required to complete the work. In this case, A and B together complete the work at a rate of 1/6, meaning they can complete the work together in 6 days.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-17T17:08:16.124631",
+    "last_used": "2026-01-17T17:08:16.124633"
+  },
+  {
+    "id": "pat_000027",
+    "template_name": "system_equations",
+    "topic": "calculus",
+    "intent": "optimization",
+    "keywords": [],
+    "problem_structure": "V square piece of tin of side N cm is to be made into V box without top, by cutting V square from ea",
+    "solution_approach": "Step 1: To find the maximum volume of the box, we first need to understand how the volume of the box is related to the side length of the square cut off from each corner. Let's denote the side length of the square cut off as 'x'. After cutting off the squares, the new side length of the box will be 18 - 2x, and the height of the box will be x. Step 2: The volume of the box (V) can be calculated using the formula V = length * width * height. Since the box is made from a square piece of tin, the length and width will be the same, so V = (18 - 2x) * (18 - 2x) * x. Step 3: To maximize the volume, we need to find the critical points of the function V(x) = (18 - 2x)^2 * x. This involves taking the derivative of V(x) with respect to x, setting it equal to zero, and solving for x. The derivative of V(x) is dV/dx = (18 - 2x)^2 - 4x(18 - 2x). Setting dV/dx = 0 gives us (18 - 2x)^2 - 4x(18 - 2x) = 0. Step 4: Solving this equation will give us the value of x that maximizes the volume of the box. By simplifying and solving the equation, we find that x = 18 / 6 = 3. Therefore, the side of the square to be cut off should be 3 cm for the volume of the box to be maximum.",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-17T17:28:08.116743",
+    "last_used": "2026-01-17T17:28:08.116745"
+  }
+]

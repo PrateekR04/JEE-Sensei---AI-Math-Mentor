@@ -1,0 +1,8 @@
+Permutations:
+nPr = n! / (n - r)!
+
+Combinations:
+nCr = n! / (r! (n - r)!)
+
+Relation:
+nPr = nCr × r!

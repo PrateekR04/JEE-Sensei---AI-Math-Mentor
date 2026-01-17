@@ -1,0 +1,75 @@
+Probability (JEE Level)
+
+Basic Probability:
+
+P(A) = Number of favorable outcomes / Total number of outcomes
+P(A) = n(A) / n(S)
+
+Properties:
+0 ≤ P(A) ≤ 1
+P(S) = 1 (certain event)
+P(∅) = 0 (impossible event)
+P(A') = 1 - P(A) (complement)
+
+Addition Rules:
+
+For any events A and B:
+P(A ∪ B) = P(A) + P(B) - P(A ∩ B)
+
+For mutually exclusive events (A ∩ B = ∅):
+P(A ∪ B) = P(A) + P(B)
+
+For three events:
+P(A ∪ B ∪ C) = P(A) + P(B) + P(C) - P(A∩B) - P(B∩C) - P(A∩C) + P(A∩B∩C)
+
+Multiplication Rules:
+
+For independent events:
+P(A ∩ B) = P(A) × P(B)
+
+For dependent events:
+P(A ∩ B) = P(A) × P(B|A)
+
+Conditional Probability:
+P(B|A) = P(A ∩ B) / P(A)
+"Probability of B given A"
+
+Bayes' Theorem:
+P(A|B) = P(B|A) × P(A) / P(B)
+
+Or expanded:
+P(A|B) = P(B|A) × P(A) / [P(B|A)×P(A) + P(B|A')×P(A')]
+
+Binomial Distribution:
+
+For n independent trials with probability p of success:
+P(X = k) = C(n,k) × p^k × (1-p)^(n-k)
+
+where C(n,k) = n! / (k! × (n-k)!)
+
+Example: Probability of getting 2 heads in 3 coin flips
+n = 3, k = 2, p = 0.5
+P(X = 2) = C(3,2) × (0.5)^2 × (0.5)^1
+P(X = 2) = 3 × 0.25 × 0.5 = 3/8
+
+Combinations (nCr):
+C(n,r) = n! / (r! × (n-r)!)
+Number of ways to choose r items from n items (order doesn't matter)
+
+Permutations (nPr):
+P(n,r) = n! / (n-r)!
+Number of ways to arrange r items from n items (order matters)
+
+Dice Probability:
+Single die: 6 outcomes (1,2,3,4,5,6)
+Two dice: 36 outcomes
+Sum of 7 with two dice: 6 favorable outcomes (1,6), (2,5), (3,4), (4,3), (5,2), (6,1)
+P(sum = 7) = 6/36 = 1/6
+
+Card Probability:
+Standard deck: 52 cards
+4 suits: Hearts, Diamonds, Clubs, Spades
+13 ranks per suit
+P(Ace) = 4/52 = 1/13
+P(Heart) = 13/52 = 1/4
+P(Face card) = 12/52 = 3/13

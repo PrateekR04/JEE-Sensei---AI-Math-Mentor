@@ -1,0 +1,25 @@
+TOPIC: Important Calculus Formulas (JEE Level)
+
+Limits:
+lim x→0 sinx/x = 1
+lim x→0 (e^x - 1)/x = 1
+lim x→0 (1 + x)^(1/x) = e
+
+Derivatives:
+d/dx (x^n) = nx^(n-1)
+d/dx (sinx) = cosx
+d/dx (cosx) = -sinx
+d/dx (e^x) = e^x
+d/dx (lnx) = 1/x
+
+Product rule:
+d(uv)/dx = u'v + uv'
+
+Quotient rule:
+d(u/v)/dx = (v u' - u v') / v²
+
+Chain rule:
+d(f(g(x)))/dx = f'(g(x)) * g'(x)
+
+Second derivative:
+d²y/dx² = derivative of dy/dx

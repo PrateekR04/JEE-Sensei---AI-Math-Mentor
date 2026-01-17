@@ -1,0 +1,10 @@
+{
+  "ocr_corrections": {
+    "x2": {
+      "x\u00b2": 2
+    }
+  },
+  "asr_corrections": {},
+  "pattern_rules": [],
+  "last_updated": "2026-01-16T17:29:26.089215"
+}

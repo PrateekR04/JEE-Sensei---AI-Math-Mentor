@@ -1,0 +1,70 @@
+Square Roots and Radicals
+
+Definition:
+The square root of a number x is a value y such that y² = x.
+Symbol: √x or x^(1/2)
+
+Properties:
+- √(a × b) = √a × √b
+- √(a / b) = √a / √b
+- (√a)² = a
+- √(a²) = |a| (absolute value)
+- √0 = 0
+- √1 = 1
+
+Perfect Squares (memorize these):
+√1 = 1
+√4 = 2
+√9 = 3
+√16 = 4
+√25 = 5
+√36 = 6
+√49 = 7
+√64 = 8
+√81 = 9
+√100 = 10
+√121 = 11
+√144 = 12
+√169 = 13
+√196 = 14
+√225 = 15
+√256 = 16
+√289 = 17
+√324 = 18
+√361 = 19
+√400 = 20
+
+How to Calculate Square Root:
+Method 1 - Prime Factorization:
+Example: √144
+1. Factor 144 = 2 × 2 × 2 × 2 × 3 × 3 = 2⁴ × 3²
+2. Take half of each exponent: 2² × 3¹ = 4 × 3 = 12
+3. Answer: √144 = 12
+
+Method 2 - Estimation:
+Example: √50
+1. Find nearest perfect squares: 49 < 50 < 64
+2. √49 = 7 and √64 = 8
+3. Since 50 is closer to 49, √50 ≈ 7.07
+
+Simplifying Square Roots:
+√18 = √(9 × 2) = √9 × √2 = 3√2
+√72 = √(36 × 2) = √36 × √2 = 6√2
+√48 = √(16 × 3) = √16 × √3 = 4√3
+√75 = √(25 × 3) = √25 × √3 = 5√3
+
+Cube Roots:
+∛x means finding y such that y³ = x
+∛8 = 2 (because 2³ = 8)
+∛27 = 3 (because 3³ = 27)
+∛64 = 4 (because 4³ = 64)
+∛125 = 5 (because 5³ = 125)
+∛1000 = 10
+
+nth Roots:
+ⁿ√x = x^(1/n)
+Example: ⁴√16 = 2 (because 2⁴ = 16)
+
+Common Mistakes:
+- √(a + b) ≠ √a + √b (WRONG!)
+- √(a - b) ≠ √a - √b (WRONG!)

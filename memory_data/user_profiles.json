@@ -1,0 +1,132 @@
+{
+  "test_user": {
+    "user_id": "test_user",
+    "created": "2026-01-16T17:29:26.089353",
+    "last_active": "2026-01-16T17:29:26.089661",
+    "topics": {
+      "algebra": {
+        "attempts": 3,
+        "correct": 2,
+        "intents": {
+          "equation": {
+            "attempts": 3,
+            "correct": 2
+          }
+        },
+        "last_attempt": "2026-01-16T17:29:26.089579",
+        "avg_confidence": 0.85
+      },
+      "calculus": {
+        "attempts": 1,
+        "correct": 0,
+        "intents": {
+          "derivative": {
+            "attempts": 1,
+            "correct": 0
+          }
+        },
+        "last_attempt": "2026-01-16T17:29:26.089663",
+        "avg_confidence": 0.6
+      }
+    },
+    "explanation_depth": "medium",
+    "preferred_method": null,
+    "total_problems": 4,
+    "total_correct": 2,
+    "streak": 0,
+    "max_streak": 2,
+    "weak_topics": [],
+    "frequent_errors": [],
+    "sessions": [],
+    "recommended_practice": []
+  },
+  "default": {
+    "user_id": "default",
+    "created": "2026-01-16T17:49:17.733274",
+    "last_active": "2026-01-17T17:28:08.119294",
+    "topics": {
+      "algebra": {
+        "attempts": 25,
+        "correct": 25,
+        "intents": {
+          "equation": {
+            "attempts": 16,
+            "correct": 16
+          },
+          "direct_calculation": {
+            "attempts": 9,
+            "correct": 9
+          }
+        },
+        "last_attempt": "2026-01-17T17:08:16.127174",
+        "avg_confidence": 0.7841753551667493
+      },
+      "calculus": {
+        "attempts": 8,
+        "correct": 8,
+        "intents": {
+          "derivative": {
+            "attempts": 5,
+            "correct": 5
+          },
+          "integral": {
+            "attempts": 1,
+            "correct": 1
+          },
+          "optimization": {
+            "attempts": 2,
+            "correct": 2
+          }
+        },
+        "last_attempt": "2026-01-17T17:28:08.119297",
+        "avg_confidence": 0.7125
+      },
+      "linear_algebra": {
+        "attempts": 1,
+        "correct": 1,
+        "intents": {
+          "system_of_equations": {
+            "attempts": 1,
+            "correct": 1
+          }
+        },
+        "last_attempt": "2026-01-16T17:58:04.914663",
+        "avg_confidence": 0.65
+      },
+      "probability": {
+        "attempts": 3,
+        "correct": 3,
+        "intents": {
+          "probability": {
+            "attempts": 3,
+            "correct": 3
+          }
+        },
+        "last_attempt": "2026-01-17T11:34:36.868144",
+        "avg_confidence": 0.85
+      },
+      "": {
+        "attempts": 1,
+        "correct": 1,
+        "intents": {
+          "": {
+            "attempts": 1,
+            "correct": 1
+          }
+        },
+        "last_attempt": "2026-01-17T17:00:34.009090",
+        "avg_confidence": 0.9715614882405776
+      }
+    },
+    "explanation_depth": "medium",
+    "preferred_method": null,
+    "total_problems": 38,
+    "total_correct": 38,
+    "streak": 38,
+    "max_streak": 38,
+    "weak_topics": [],
+    "frequent_errors": [],
+    "sessions": [],
+    "recommended_practice": []
+  }
+}

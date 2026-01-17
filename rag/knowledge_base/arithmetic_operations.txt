@@ -1,0 +1,59 @@
+Basic Arithmetic Operations
+
+Addition (+):
+Definition: Combining two or more numbers to get a sum.
+Example: 5 + 3 = 8
+Properties:
+- Commutative: a + b = b + a
+- Associative: (a + b) + c = a + (b + c)
+- Identity: a + 0 = a
+
+Subtraction (-):
+Definition: Finding the difference between two numbers.
+Example: 10 - 4 = 6
+Note: Subtraction is NOT commutative (a - b ≠ b - a)
+
+Multiplication (×):
+Definition: Repeated addition of a number.
+Example: 4 × 3 = 12 (same as 4 + 4 + 4)
+Properties:
+- Commutative: a × b = b × a
+- Associative: (a × b) × c = a × (b × c)
+- Identity: a × 1 = a
+- Zero property: a × 0 = 0
+- Distributive: a × (b + c) = a × b + a × c
+
+Division (÷):
+Definition: Splitting a number into equal parts.
+Example: 15 ÷ 3 = 5
+Components: Dividend ÷ Divisor = Quotient
+Note: Division by zero is undefined
+
+Order of Operations (PEMDAS/BODMAS):
+1. Parentheses / Brackets
+2. Exponents / Orders
+3. Multiplication and Division (left to right)
+4. Addition and Subtraction (left to right)
+
+Example: 2 + 3 × 4
+Step 1: 3 × 4 = 12
+Step 2: 2 + 12 = 14
+Answer: 14
+
+Example: (2 + 3) × 4
+Step 1: 2 + 3 = 5
+Step 2: 5 × 4 = 20
+Answer: 20
+
+Multiplication Tables (1-12):
+2 × 2 = 4,  2 × 3 = 6,  2 × 4 = 8,  2 × 5 = 10, 2 × 6 = 12
+3 × 3 = 9,  3 × 4 = 12, 3 × 5 = 15, 3 × 6 = 18, 3 × 7 = 21
+4 × 4 = 16, 4 × 5 = 20, 4 × 6 = 24, 4 × 7 = 28, 4 × 8 = 32
+5 × 5 = 25, 5 × 6 = 30, 5 × 7 = 35, 5 × 8 = 40, 5 × 9 = 45
+6 × 6 = 36, 6 × 7 = 42, 6 × 8 = 48, 6 × 9 = 54, 6 × 10 = 60
+7 × 7 = 49, 7 × 8 = 56, 7 × 9 = 63, 7 × 10 = 70, 7 × 11 = 77
+8 × 8 = 64, 8 × 9 = 72, 8 × 10 = 80, 8 × 11 = 88, 8 × 12 = 96
+9 × 9 = 81, 9 × 10 = 90, 9 × 11 = 99, 9 × 12 = 108
+10 × 10 = 100, 10 × 11 = 110, 10 × 12 = 120
+11 × 11 = 121, 11 × 12 = 132
+12 × 12 = 144

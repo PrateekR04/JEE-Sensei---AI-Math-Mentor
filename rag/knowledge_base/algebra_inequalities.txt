@@ -1,0 +1,12 @@
+Inequalities
+
+Linear:
+ax + b > 0
+
+Quadratic:
+ax^2 + bx + c > 0
+
+Steps:
+1) Find roots
+2) Draw sign chart
+3) Identify positive/negative regions

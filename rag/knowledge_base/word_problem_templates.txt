@@ -1,0 +1,181 @@
+# Word Problem Modeling Templates
+# Knowledge base for JEE word problem → equation conversion
+
+## Age Problems
+Pattern: "A is X years older/younger than B", "In Y years, ages will be..."
+Variables:
+- Current age of each person
+Equations:
+- Age difference: a = b + X or a = b - X
+- Future condition: a + Y = k*(b + Y)
+- Past condition: a - Y = k*(b - Y)
+
+Example:
+"A father is 30 years older than son. In 5 years, father is twice son's age."
+Let f = father's current age, s = son's current age
+f = s + 30
+f + 5 = 2*(s + 5)
+Solution: s = 25, f = 55
+
+---
+
+## Money/Cost Problems
+Pattern: "N items of type A and M items of type B cost total T"
+Variables:
+- Cost per unit of each item type
+Equations:
+- Linear combinations: Na + Mb = T
+
+Example:
+"5 pens and 3 notebooks cost ₹120. 3 pens and 5 notebooks cost ₹140."
+Let p = cost of pen, n = cost of notebook
+5*p + 3*n = 120
+3*p + 5*n = 140
+Solution: p = 7.5, n = 27.5
+
+---
+
+## Speed-Distance-Time Problems
+Formula: distance = speed × time, or d = v × t
+Pattern: "Travels D km at speed v", "Takes T hours more/less at different speed"
+Variables:
+- Speed, time, or distance (whichever is unknown)
+- Latent variables: if distance not given, use D
+
+Example:
+"Train travels 120 km. At 10 km/h more speed, takes 1 hour less."
+Let v = original speed
+120/v - 120/(v+10) = 1
+Solution: v = 30 km/h
+
+---
+
+## Work & Time Problems
+Formula: Rate = 1/time, Combined work rate = sum of rates
+Pattern: "A completes in X days, B in Y days, together?"
+Variables:
+- Time to complete together (t)
+Equations:
+- 1/X + 1/Y = 1/t
+
+Example:
+"A can do work in 10 days, B in 15 days. How long together?"
+Let t = time together
+1/10 + 1/15 = 1/t
+Solution: t = 6 days
+
+---
+
+## Digit Problems (Two-digit numbers)
+Number representation: N = 10*tens + units
+Reversed number: N' = 10*units + tens
+Pattern: "Sum of digits is S", "Reversed number is K more/less"
+Variables:
+- tens digit (x), units digit (y)
+Equations:
+- x + y = S (sum of digits)
+- 10*y + x = 10*x + y + K (reversed relationship)
+
+Example:
+"Sum of digits is 9. Reversed number is 27 more."
+Let x = tens, y = units
+x + y = 9
+10*y + x = 10*x + y + 27
+Simplify: 9*y - 9*x = 27 → y - x = 3
+Solution: x = 3, y = 6, Number = 36
+
+---
+
+## Mixture Problems
+Pattern: "Mix solutions of concentration X% and Y% to get Z%"
+Formula: C1*V1 + C2*V2 = C_final*(V1 + V2)
+Variables:
+- Volumes of each solution
+
+Example:
+"Mix 30% acid with 50% acid to get 20L of 35% acid"
+Let x = liters of 30%, y = liters of 50%
+x + y = 20
+0.30*x + 0.50*y = 0.35*20
+Solution: x = 15, y = 5
+
+---
+
+## Ratio & Proportion Problems
+Pattern: "Ratio of A to B is m:n", "If A increased by X..."
+Variables:
+- Actual values as multiples of ratio unit
+
+Example:
+"Ages in ratio 3:5, sum is 40"
+Let ages be 3k and 5k
+3k + 5k = 40
+k = 5
+Ages: 15 and 25
+
+---
+
+## Product/Nonlinear Problems
+Pattern: "Sum is S and product is P"
+Variables:
+- Two numbers x and y
+Equations:
+- x + y = S (linear)
+- x*y = P (nonlinear)
+Note: Substitution method: y = S - x, then x*(S-x) = P
+
+Example:
+"Sum of two numbers is 20, product is 96"
+x + y = 20
+x*y = 96
+Substitution: x*(20-x) = 96 → x² - 20x + 96 = 0
+Solution: x = 12 or 8, y = 8 or 12
+
+---
+
+## Optimization Problems (Calculus)
+Pattern: "Maximum/minimum area/volume given constraint"
+Method:
+1. Define objective function f(x)
+2. Express constraint as equation
+3. Substitute constraint into objective
+4. Find critical points: f'(x) = 0
+5. Verify max/min with second derivative
+
+Example:
+"Rectangle with perimeter 20, maximize area"
+Let length = x, width = y
+Constraint: 2x + 2y = 20 → y = 10 - x
+Objective: Area = x*y = x*(10-x) = 10x - x²
+f'(x) = 10 - 2x = 0 → x = 5
+Maximum area = 5*5 = 25
+
+---
+
+## Probability Problems
+Types:
+- Binomial: P(k successes in n trials) = C(n,k) * p^k * (1-p)^(n-k)
+- Without replacement: Update probabilities after each draw
+- Conditional: P(A|B) = P(A∩B)/P(B)
+- Bayes: P(A|B) = P(B|A)*P(A)/P(B)
+
+Example:
+"3 coin flips, probability of exactly 2 heads"
+n = 3, k = 2, p = 0.5
+P = C(3,2) * (0.5)² * (0.5)¹ = 3 * 0.25 * 0.5 = 0.375
+
+---
+
+## Arithmetic Word Problems (Direct Computation)
+Pattern: Profit/loss, simple interest, percentages
+No equations needed - direct formula application
+
+Profit = Selling Price - Cost Price
+Loss = Cost Price - Selling Price
+Simple Interest = (P * R * T) / 100
+Percentage = (Part / Whole) * 100
+
+Example:
+"Buy at ₹40/kg, sell at ₹50/kg, profit on 20kg?"
+Profit per kg = 50 - 40 = 10
+Total profit = 10 * 20 = ₹200

@@ -1,0 +1,7 @@
+Continuity
+
+Function is continuous at x = a if:
+
+1) f(a) exists  
+2) lim x→a f(x) exists  
+3) lim x→a f(x) = f(a)

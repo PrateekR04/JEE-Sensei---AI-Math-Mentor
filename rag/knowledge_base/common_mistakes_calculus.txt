@@ -1,0 +1,5 @@
+Common Calculus Mistakes
+
+Forgetting chain rule  
+Wrong derivative of powers  
+Ignoring domain

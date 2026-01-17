@@ -1,0 +1,67 @@
+Limits (JEE Level)
+
+Definition:
+lim(x→a) f(x) = L means f(x) approaches L as x approaches a
+
+Basic Limit Laws:
+
+1. CONSTANT RULE
+   lim(x→a) c = c
+
+2. IDENTITY RULE
+   lim(x→a) x = a
+
+3. SUM/DIFFERENCE RULE
+   lim(x→a) [f(x) ± g(x)] = lim f(x) ± lim g(x)
+
+4. PRODUCT RULE
+   lim(x→a) [f(x) * g(x)] = lim f(x) * lim g(x)
+
+5. QUOTIENT RULE
+   lim(x→a) [f(x)/g(x)] = lim f(x) / lim g(x), if lim g(x) ≠ 0
+
+6. POWER RULE
+   lim(x→a) [f(x)]^n = [lim f(x)]^n
+
+Important Standard Limits:
+
+1. lim(x→0) sin(x)/x = 1
+   (Most important limit for JEE)
+
+2. lim(x→0) (1 - cos(x))/x = 0
+
+3. lim(x→0) (1 - cos(x))/x^2 = 1/2
+
+4. lim(x→0) tan(x)/x = 1
+
+5. lim(x→0) (e^x - 1)/x = 1
+
+6. lim(x→0) ln(1+x)/x = 1
+
+7. lim(x→0) (a^x - 1)/x = ln(a)
+
+8. lim(x→∞) (1 + 1/x)^x = e
+
+9. lim(x→0) (1 + x)^(1/x) = e
+
+L'Hôpital's Rule:
+If lim f(x)/g(x) gives 0/0 or ∞/∞ (indeterminate forms):
+lim(x→a) f(x)/g(x) = lim(x→a) f'(x)/g'(x)
+
+Indeterminate Forms:
+0/0, ∞/∞, 0×∞, ∞-∞, 0^0, 1^∞, ∞^0
+
+One-Sided Limits:
+lim(x→a+) f(x) = right-hand limit (x approaches a from right)
+lim(x→a-) f(x) = left-hand limit (x approaches a from left)
+
+Limit exists ⟺ LHL = RHL
+
+Limits at Infinity:
+lim(x→∞) 1/x = 0
+lim(x→∞) 1/x^n = 0 for n > 0
+lim(x→∞) e^(-x) = 0
+lim(x→∞) x^n/e^x = 0 (exponential grows faster than polynomial)
+
+Sandwich Theorem:
+If g(x) ≤ f(x) ≤ h(x) and lim g(x) = lim h(x) = L, then lim f(x) = L

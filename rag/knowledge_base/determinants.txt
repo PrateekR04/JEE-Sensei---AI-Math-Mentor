@@ -1,0 +1,9 @@
+Determinants
+
+For 2×2 matrix:
+|a b|
+|c d|
+
+Determinant = ad - bc
+
+If determinant = 0 → matrix is singular

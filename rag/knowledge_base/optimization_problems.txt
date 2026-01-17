@@ -1,0 +1,69 @@
+Optimization Problems (JEE Level)
+
+Finding Maximum and Minimum Values Using Calculus
+
+Method - First Derivative Test:
+
+1. Find f'(x)
+2. Set f'(x) = 0 and solve for critical points
+3. Test intervals around critical points:
+   - If f'(x) changes from + to -, then maximum
+   - If f'(x) changes from - to +, then minimum
+
+Method - Second Derivative Test:
+
+1. Find f'(x) and f''(x)
+2. Set f'(x) = 0 to find critical points x = c
+3. Evaluate f''(c):
+   - If f''(c) < 0, then c is a local maximum
+   - If f''(c) > 0, then c is a local minimum
+   - If f''(c) = 0, test is inconclusive (use first derivative test)
+
+Steps for Word Problems:
+
+1. Identify the quantity to maximize/minimize
+2. Express it as a function of one variable
+3. Find domain (physical constraints)
+4. Find critical points using f'(x) = 0
+5. Test critical points and endpoints
+6. Verify answer makes physical sense
+
+Common Optimization Problems:
+
+1. AREA PROBLEMS
+   Example: Maximize area of rectangle with perimeter P
+   Let sides be x and y, then 2x + 2y = P
+   y = (P - 2x)/2 = P/2 - x
+   Area A = x * y = x(P/2 - x) = Px/2 - x^2
+   dA/dx = P/2 - 2x = 0
+   x = P/4
+   Maximum area when rectangle is a square
+
+2. DISTANCE PROBLEMS
+   Minimize distance = minimize distance^2 (easier to differentiate)
+
+3. COST/REVENUE PROBLEMS
+   Profit = Revenue - Cost
+   Maximum profit when d(Profit)/dx = 0
+
+Example: Maximize f(x) = x(10-x)
+
+Step 1: f(x) = 10x - x^2
+
+Step 2: f'(x) = 10 - 2x
+
+Step 3: Set f'(x) = 0
+   10 - 2x = 0
+   x = 5
+
+Step 4: f''(x) = -2 < 0, so x = 5 is maximum
+
+Step 5: f(5) = 5(10-5) = 25
+
+Answer: Maximum value is 25 at x = 5
+
+Absolute (Global) Extrema on [a,b]:
+1. Find all critical points in (a,b)
+2. Evaluate f at critical points and endpoints a, b
+3. Largest value is absolute maximum
+4. Smallest value is absolute minimum

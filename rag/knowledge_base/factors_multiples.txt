@@ -1,0 +1,64 @@
+Factors and Multiples
+
+Factors:
+Numbers that divide evenly into another number.
+Example: Factors of 12 are 1, 2, 3, 4, 6, 12
+
+Finding Factors:
+1. Start with 1 and the number itself
+2. Check each number up to the square root
+
+Factors of Common Numbers:
+6: 1, 2, 3, 6
+8: 1, 2, 4, 8
+10: 1, 2, 5, 10
+12: 1, 2, 3, 4, 6, 12
+15: 1, 3, 5, 15
+18: 1, 2, 3, 6, 9, 18
+20: 1, 2, 4, 5, 10, 20
+24: 1, 2, 3, 4, 6, 8, 12, 24
+30: 1, 2, 3, 5, 6, 10, 15, 30
+36: 1, 2, 3, 4, 6, 9, 12, 18, 36
+
+Prime Numbers:
+Numbers with exactly two factors (1 and itself).
+First 25 primes: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97
+Note: 2 is the only even prime number.
+
+Prime Factorization:
+Breaking a number into product of primes.
+Example: 60 = 2 × 2 × 3 × 5 = 2² × 3 × 5
+Example: 84 = 2 × 2 × 3 × 7 = 2² × 3 × 7
+
+GCD (Greatest Common Divisor) / HCF (Highest Common Factor):
+Largest number that divides both numbers.
+Method: Prime factorization, take common primes with lowest exponents.
+Example: GCD of 12 and 18
+12 = 2² × 3
+18 = 2 × 3²
+GCD = 2 × 3 = 6
+
+Multiples:
+Numbers obtained by multiplying by integers.
+Example: Multiples of 4 are 4, 8, 12, 16, 20, 24...
+
+LCM (Least Common Multiple):
+Smallest number that is a multiple of both numbers.
+Method: Prime factorization, take all primes with highest exponents.
+Example: LCM of 12 and 18
+12 = 2² × 3
+18 = 2 × 3²
+LCM = 2² × 3² = 4 × 9 = 36
+
+Relationship between GCD and LCM:
+GCD(a,b) × LCM(a,b) = a × b
+Example: GCD(12,18) × LCM(12,18) = 6 × 36 = 216 = 12 × 18 ✓
+
+Divisibility Rules:
+By 2: Last digit is even (0, 2, 4, 6, 8)
+By 3: Sum of digits divisible by 3
+By 4: Last two digits divisible by 4
+By 5: Last digit is 0 or 5
+By 6: Divisible by both 2 and 3
+By 9: Sum of digits divisible by 9
+By 10: Last digit is 0

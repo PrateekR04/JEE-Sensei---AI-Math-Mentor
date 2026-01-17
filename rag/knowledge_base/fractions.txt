@@ -1,0 +1,56 @@
+Fractions
+
+Definition:
+A fraction represents a part of a whole.
+Form: a/b where a is numerator and b is denominator (b ≠ 0)
+
+Types of Fractions:
+- Proper fraction: numerator < denominator (e.g., 3/4)
+- Improper fraction: numerator ≥ denominator (e.g., 5/3)
+- Mixed number: whole number + fraction (e.g., 1 2/3)
+
+Converting Mixed to Improper:
+Example: 2 3/4 = (2×4 + 3)/4 = 11/4
+
+Converting Improper to Mixed:
+Example: 11/4 = 2 remainder 3 = 2 3/4
+
+Simplifying Fractions:
+Divide numerator and denominator by their GCD (Greatest Common Divisor)
+Example: 12/18 = (12÷6)/(18÷6) = 2/3
+
+Adding Fractions:
+Same denominator: a/c + b/c = (a+b)/c
+Example: 2/5 + 1/5 = 3/5
+
+Different denominators: Find LCD (Least Common Denominator)
+Example: 1/3 + 1/4
+LCD = 12
+= 4/12 + 3/12 = 7/12
+
+Subtracting Fractions:
+Same denominator: a/c - b/c = (a-b)/c
+Example: 5/8 - 3/8 = 2/8 = 1/4
+
+Multiplying Fractions:
+(a/b) × (c/d) = (a×c)/(b×d)
+Example: 2/3 × 4/5 = 8/15
+
+Dividing Fractions:
+(a/b) ÷ (c/d) = (a/b) × (d/c) = (a×d)/(b×c)
+Example: 2/3 ÷ 4/5 = 2/3 × 5/4 = 10/12 = 5/6
+
+Fraction to Decimal:
+Divide numerator by denominator
+1/2 = 0.5
+1/4 = 0.25
+3/4 = 0.75
+1/5 = 0.2
+1/3 = 0.333... (repeating)
+2/3 = 0.666... (repeating)
+
+Decimal to Fraction:
+0.5 = 5/10 = 1/2
+0.25 = 25/100 = 1/4
+0.75 = 75/100 = 3/4
+0.125 = 125/1000 = 1/8

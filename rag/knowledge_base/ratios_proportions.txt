@@ -1,0 +1,48 @@
+Ratios and Proportions
+
+Ratio:
+A ratio compares two quantities.
+Forms: a:b, a/b, or "a to b"
+Example: 3:4 means for every 3 of one thing, there are 4 of another.
+
+Simplifying Ratios:
+Divide both parts by their GCD.
+Example: 12:18 = 2:3 (divided by 6)
+
+Proportion:
+A proportion states that two ratios are equal.
+Form: a/b = c/d or a:b = c:d
+
+Cross Multiplication:
+If a/b = c/d, then a × d = b × c
+Example: If 2/3 = x/12
+2 × 12 = 3 × x
+24 = 3x
+x = 8
+
+Direct Proportion:
+When one quantity increases, the other increases at the same rate.
+y = kx (where k is constant)
+Example: If 5 pens cost $10, how much do 8 pens cost?
+5/10 = 8/x → x = 16
+
+Inverse Proportion:
+When one quantity increases, the other decreases.
+xy = k (where k is constant)
+Example: If 4 workers do a job in 6 days, how long for 3 workers?
+4 × 6 = 3 × x → x = 8 days
+
+Solving Ratio Problems:
+Example: Divide 100 in the ratio 2:3
+Sum of parts = 2 + 3 = 5
+First part = (2/5) × 100 = 40
+Second part = (3/5) × 100 = 60
+
+Example: The ratio of boys to girls is 3:5. If there are 24 boys, how many girls?
+3:5 = 24:x
+3x = 5 × 24 = 120
+x = 40 girls
+
+Unit Rate:
+A ratio with denominator 1.
+Example: 120 miles in 3 hours = 40 miles per hour

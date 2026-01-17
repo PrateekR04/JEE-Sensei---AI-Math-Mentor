@@ -1,0 +1,17 @@
+Quadratic Equations
+
+Standard form:
+ax^2 + bx + c = 0, a ≠ 0
+
+Quadratic formula:
+x = (-b ± √(b^2 - 4ac)) / (2a)
+
+Discriminant:
+D = b^2 - 4ac
+
+If D > 0 → two real and distinct roots
+If D = 0 → equal real roots
+If D < 0 → no real roots
+
+Sum of roots = -b/a  
+Product of roots = c/a

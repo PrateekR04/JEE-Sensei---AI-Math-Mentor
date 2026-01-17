@@ -1,0 +1,12 @@
+Polynomials
+
+General form:
+P(x) = a_n x^n + a_(n-1) x^(n-1) + ... + a0
+
+Degree = highest power of x
+
+Remainder Theorem:
+Remainder when P(x) divided by (x - a) = P(a)
+
+Factor Theorem:
+If P(a) = 0, then (x - a) is a factor

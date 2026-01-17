@@ -1,0 +1,93 @@
+[
+  {
+    "feedback_id": "fb_000001",
+    "problem_id": "test_001",
+    "is_correct": true,
+    "correction": null,
+    "error_category": null,
+    "user_id": "test_user",
+    "timestamp": "2026-01-16T17:29:26.088713",
+    "problem_text": "",
+    "original_answer": "",
+    "topic": "",
+    "intent": ""
+  },
+  {
+    "feedback_id": "fb_000002",
+    "problem_id": "test_002",
+    "is_correct": false,
+    "correction": "x = 3 not x = 2",
+    "error_category": "reasoning",
+    "user_id": "test_user",
+    "timestamp": "2026-01-16T17:29:26.088868",
+    "problem_text": "",
+    "original_answer": "",
+    "topic": "",
+    "intent": ""
+  },
+  {
+    "feedback_id": "fb_000003",
+    "problem_id": "665ce607",
+    "is_correct": true,
+    "correction": null,
+    "error_category": null,
+    "user_id": "default",
+    "timestamp": "2026-01-17T16:51:59.164001",
+    "problem_text": "",
+    "original_answer": "",
+    "topic": "algebra",
+    "intent": "equation"
+  },
+  {
+    "feedback_id": "fb_000004",
+    "problem_id": "b0b87fb8",
+    "is_correct": true,
+    "correction": null,
+    "error_category": null,
+    "user_id": "default",
+    "timestamp": "2026-01-17T17:00:34.007043",
+    "problem_text": "",
+    "original_answer": "",
+    "topic": "",
+    "intent": ""
+  },
+  {
+    "feedback_id": "fb_000005",
+    "problem_id": "00649d64",
+    "is_correct": true,
+    "correction": null,
+    "error_category": null,
+    "user_id": "default",
+    "timestamp": "2026-01-17T17:08:15.573736",
+    "problem_text": "",
+    "original_answer": "",
+    "topic": "algebra",
+    "intent": "direct_calculation"
+  },
+  {
+    "feedback_id": "fb_000006",
+    "problem_id": "ae9410e1",
+    "is_correct": true,
+    "correction": null,
+    "error_category": null,
+    "user_id": "default",
+    "timestamp": "2026-01-17T17:08:16.124981",
+    "problem_text": "",
+    "original_answer": "",
+    "topic": "algebra",
+    "intent": "direct_calculation"
+  },
+  {
+    "feedback_id": "fb_000007",
+    "problem_id": "f5b69cf4",
+    "is_correct": true,
+    "correction": null,
+    "error_category": null,
+    "user_id": "default",
+    "timestamp": "2026-01-17T17:28:08.117126",
+    "problem_text": "",
+    "original_answer": "",
+    "topic": "calculus",
+    "intent": "optimization"
+  }
+]

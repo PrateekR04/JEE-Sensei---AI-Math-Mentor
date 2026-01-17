@@ -1,0 +1,6 @@
+Domain Constraints
+
+Division by zero undefined  
+√x defined only for x ≥ 0  
+log(x) defined only for x > 0  
+Probability lies between 0 and 1

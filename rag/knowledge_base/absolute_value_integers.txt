@@ -1,0 +1,72 @@
+Absolute Value and Integers
+
+Integers:
+Whole numbers including negatives, zero, and positives.
+..., -3, -2, -1, 0, 1, 2, 3, ...
+
+Absolute Value:
+The distance from zero on a number line (always positive).
+Symbol: |x|
+|5| = 5
+|-5| = 5
+|0| = 0
+
+Properties of Absolute Value:
+|a| ≥ 0 (always non-negative)
+|a| = 0 if and only if a = 0
+|a × b| = |a| × |b|
+|a / b| = |a| / |b|
+|a + b| ≤ |a| + |b| (Triangle Inequality)
+
+Operations with Integers:
+
+Adding Integers:
+Same signs: Add absolute values, keep the sign
+5 + 3 = 8
+(-5) + (-3) = -8
+
+Different signs: Subtract absolute values, use sign of larger |value|
+5 + (-3) = 2
+(-5) + 3 = -2
+
+Subtracting Integers:
+Add the opposite
+5 - 3 = 5 + (-3) = 2
+5 - (-3) = 5 + 3 = 8
+(-5) - 3 = (-5) + (-3) = -8
+(-5) - (-3) = (-5) + 3 = -2
+
+Multiplying Integers:
+Same signs → Positive result
+5 × 3 = 15
+(-5) × (-3) = 15
+
+Different signs → Negative result
+5 × (-3) = -15
+(-5) × 3 = -15
+
+Dividing Integers:
+Same signs → Positive result
+15 ÷ 3 = 5
+(-15) ÷ (-3) = 5
+
+Different signs → Negative result
+15 ÷ (-3) = -5
+(-15) ÷ 3 = -5
+
+Sign Rules Summary:
+(+) × (+) = +
+(-) × (-) = +
+(+) × (-) = -
+(-) × (+) = -
+
+Solving Absolute Value Equations:
+|x| = a (where a ≥ 0)
+Solution: x = a or x = -a
+
+Example: |x| = 5
+Solution: x = 5 or x = -5
+
+Example: |x - 3| = 7
+x - 3 = 7 or x - 3 = -7
+x = 10 or x = -4

@@ -1,0 +1,53 @@
+Exponents and Powers
+
+Definition:
+An exponent indicates how many times to multiply a base by itself.
+Form: a^n where a is base and n is exponent
+Example: 2^3 = 2 × 2 × 2 = 8
+
+Basic Powers to Memorize:
+2^1 = 2,   2^2 = 4,   2^3 = 8,   2^4 = 16,  2^5 = 32,  2^6 = 64,  2^7 = 128,  2^8 = 256
+3^1 = 3,   3^2 = 9,   3^3 = 27,  3^4 = 81,  3^5 = 243
+4^1 = 4,   4^2 = 16,  4^3 = 64,  4^4 = 256
+5^1 = 5,   5^2 = 25,  5^3 = 125, 5^4 = 625
+10^1 = 10, 10^2 = 100, 10^3 = 1000, 10^4 = 10000
+
+Laws of Exponents:
+1. Product Rule: a^m × a^n = a^(m+n)
+   Example: 2^3 × 2^4 = 2^7 = 128
+
+2. Quotient Rule: a^m / a^n = a^(m-n)
+   Example: 2^5 / 2^2 = 2^3 = 8
+
+3. Power of a Power: (a^m)^n = a^(m×n)
+   Example: (2^3)^2 = 2^6 = 64
+
+4. Power of a Product: (ab)^n = a^n × b^n
+   Example: (2×3)^2 = 2^2 × 3^2 = 4 × 9 = 36
+
+5. Power of a Quotient: (a/b)^n = a^n / b^n
+   Example: (4/2)^3 = 4^3 / 2^3 = 64/8 = 8
+
+6. Zero Exponent: a^0 = 1 (for a ≠ 0)
+   Example: 5^0 = 1
+
+7. Negative Exponent: a^(-n) = 1/a^n
+   Example: 2^(-3) = 1/2^3 = 1/8
+
+8. Fractional Exponent: a^(1/n) = ⁿ√a
+   Example: 8^(1/3) = ∛8 = 2
+
+   a^(m/n) = ⁿ√(a^m) = (ⁿ√a)^m
+   Example: 8^(2/3) = (∛8)^2 = 2^2 = 4
+
+Scientific Notation:
+A number in form: a × 10^n (where 1 ≤ |a| < 10)
+Example: 3,500,000 = 3.5 × 10^6
+Example: 0.00045 = 4.5 × 10^(-4)
+
+Solving Exponential Equations:
+Example: 2^x = 16
+Since 16 = 2^4, therefore x = 4
+
+Example: 3^x = 81
+Since 81 = 3^4, therefore x = 4

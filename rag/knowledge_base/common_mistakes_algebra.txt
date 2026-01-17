@@ -1,0 +1,6 @@
+Common Algebra Mistakes
+
+(a + b)/a ≠ b  
+a^2 + b^2 ≠ (a + b)^2  
+Dividing by zero  
+Sign errors

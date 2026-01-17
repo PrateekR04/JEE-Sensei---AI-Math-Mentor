@@ -1,0 +1,37 @@
+TOPIC: Matrices Basics (JEE Level)
+
+A matrix is a rectangular array of numbers arranged in rows and columns.
+
+Matrix notation:
+A = [a_ij] of order m × n
+where m = number of rows, n = number of columns
+
+Types of matrices:
+- Row matrix: 1 × n
+- Column matrix: m × 1
+- Square matrix: n × n
+- Zero matrix: all elements are zero
+- Identity matrix I: diagonal elements are 1, rest are 0
+
+Matrix addition:
+A + B is defined only if both have same order.
+(A + B)_ij = a_ij + b_ij
+
+Scalar multiplication:
+(kA)_ij = k * a_ij
+
+Matrix multiplication:
+If A is m×n and B is n×p, then AB is m×p
+(AB)_ij = Σ a_ik * b_kj
+
+Important properties:
+- AB ≠ BA (not commutative)
+- A(B + C) = AB + AC
+- (AB)C = A(BC)
+
+Transpose:
+(Aᵀ)_ij = a_ji
+
+Properties of transpose:
+(A + B)ᵀ = Aᵀ + Bᵀ
+(AB)ᵀ = BᵀAᵀ

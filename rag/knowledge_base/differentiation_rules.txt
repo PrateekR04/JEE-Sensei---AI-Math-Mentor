@@ -1,0 +1,60 @@
+Differentiation Rules (JEE Level)
+
+Basic Rules:
+
+1. POWER RULE
+   d/dx (x^n) = n * x^(n-1)
+   Example: d/dx (x^3) = 3x^2
+
+2. CONSTANT RULE
+   d/dx (c) = 0
+   where c is a constant
+
+3. CONSTANT MULTIPLE RULE
+   d/dx (c * f(x)) = c * d/dx (f(x))
+   Example: d/dx (5x^2) = 5 * 2x = 10x
+
+4. SUM/DIFFERENCE RULE
+   d/dx (f(x) ± g(x)) = d/dx (f(x)) ± d/dx (g(x))
+   Example: d/dx (x^2 + 3x) = 2x + 3
+
+5. PRODUCT RULE
+   d/dx (u * v) = u * dv/dx + v * du/dx
+   Example: d/dx (x^2 * sin(x)) = x^2 * cos(x) + sin(x) * 2x
+
+6. QUOTIENT RULE
+   d/dx (u/v) = (v * du/dx - u * dv/dx) / v^2
+   Example: d/dx (sin(x)/x) = (x*cos(x) - sin(x)) / x^2
+
+7. CHAIN RULE
+   d/dx (f(g(x))) = f'(g(x)) * g'(x)
+   dy/dx = dy/du × du/dx
+   Example: d/dx (sin(x^2)) = cos(x^2) * 2x
+
+Trigonometric Derivatives:
+   d/dx (sin x) = cos x
+   d/dx (cos x) = -sin x
+   d/dx (tan x) = sec^2 x
+   d/dx (cot x) = -csc^2 x
+   d/dx (sec x) = sec x * tan x
+   d/dx (csc x) = -csc x * cot x
+
+Inverse Trigonometric:
+   d/dx (arcsin x) = 1/√(1-x^2)
+   d/dx (arccos x) = -1/√(1-x^2)
+   d/dx (arctan x) = 1/(1+x^2)
+
+Exponential and Logarithmic:
+   d/dx (e^x) = e^x
+   d/dx (a^x) = a^x * ln(a)
+   d/dx (ln x) = 1/x
+   d/dx (log_a x) = 1/(x * ln(a))
+
+Higher Order Derivatives:
+   f''(x) = d^2f/dx^2 = second derivative
+   f'''(x) = d^3f/dx^3 = third derivative
+
+Applications:
+   - Slope of tangent line at point (a, f(a)): m = f'(a)
+   - Equation of tangent: y - f(a) = f'(a)(x - a)
+   - Rate of change: dy/dt represents velocity if y is position

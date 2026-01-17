@@ -1,0 +1,11 @@
+Applications of Derivatives
+
+Increasing function: dy/dx > 0  
+Decreasing function: dy/dx < 0  
+
+Maxima / Minima:
+dy/dx = 0
+
+Second derivative test:
+d²y/dx² > 0 → minimum  
+d²y/dx² < 0 → maximum

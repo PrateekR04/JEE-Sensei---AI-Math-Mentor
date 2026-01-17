@@ -1,0 +1,68 @@
+Integration Rules (JEE Level)
+
+Basic Integration Rules:
+
+1. POWER RULE
+   ∫ x^n dx = x^(n+1)/(n+1) + C, where n ≠ -1
+   Example: ∫ x^2 dx = x^3/3 + C
+
+2. CONSTANT RULE
+   ∫ k dx = kx + C
+   Example: ∫ 5 dx = 5x + C
+
+3. CONSTANT MULTIPLE RULE
+   ∫ k * f(x) dx = k * ∫ f(x) dx
+   Example: ∫ 3x^2 dx = 3 * x^3/3 = x^3 + C
+
+4. SUM/DIFFERENCE RULE
+   ∫ (f(x) ± g(x)) dx = ∫ f(x) dx ± ∫ g(x) dx
+   Example: ∫ (x^2 + 3x) dx = x^3/3 + 3x^2/2 + C
+
+5. SPECIAL CASE: n = -1
+   ∫ 1/x dx = ln|x| + C
+
+Standard Integrals:
+
+Trigonometric:
+   ∫ sin x dx = -cos x + C
+   ∫ cos x dx = sin x + C
+   ∫ sec^2 x dx = tan x + C
+   ∫ csc^2 x dx = -cot x + C
+   ∫ sec x tan x dx = sec x + C
+   ∫ csc x cot x dx = -csc x + C
+   ∫ tan x dx = ln|sec x| + C
+   ∫ cot x dx = ln|sin x| + C
+   ∫ sec x dx = ln|sec x + tan x| + C
+   ∫ csc x dx = ln|csc x - cot x| + C
+
+Exponential and Logarithmic:
+   ∫ e^x dx = e^x + C
+   ∫ a^x dx = a^x / ln(a) + C
+   ∫ ln x dx = x ln x - x + C (integration by parts)
+
+Inverse Trigonometric:
+   ∫ 1/√(1-x^2) dx = arcsin x + C
+   ∫ 1/(1+x^2) dx = arctan x + C
+   ∫ 1/(x√(x^2-1)) dx = arcsec x + C
+
+Integration Techniques:
+
+1. SUBSTITUTION (u-substitution)
+   If ∫ f(g(x)) * g'(x) dx, let u = g(x), then ∫ f(u) du
+   
+2. INTEGRATION BY PARTS
+   ∫ u dv = uv - ∫ v du
+   Use LIATE priority: Log, Inverse trig, Algebraic, Trig, Exponential
+
+3. PARTIAL FRACTIONS
+   For rational functions P(x)/Q(x) where degree(P) < degree(Q)
+   Decompose into simpler fractions
+
+Definite Integrals:
+   ∫[a to b] f(x) dx = F(b) - F(a)
+   where F is antiderivative of f
+
+Properties:
+   ∫[a to b] f(x) dx = -∫[b to a] f(x) dx
+   ∫[a to a] f(x) dx = 0
+   ∫[a to b] f(x) dx = ∫[a to c] f(x) dx + ∫[c to b] f(x) dx
