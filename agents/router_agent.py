@@ -37,8 +37,11 @@ class RouterAgent:
         
         # EXPLANATION/CONCEPT QUESTIONS - detect FIRST before math operations
         # These are "what is X?" or "explain X" questions about concepts, not computations
-        explanation_starters = ['what is the', 'what is a', 'explain', 'define', 'describe', 'how does', 'why does', 'what are']
-        concept_keywords = ['rule', 'theorem', 'formula', 'law', 'method', 'concept', 'definition', 'principle', 'technique']
+        explanation_starters = ['what is the', 'what is a', 'explain', 'define', 'describe', 
+                              'how does', 'why does', 'what are', 'give me', 'list', 'show me']
+        
+        concept_keywords = ['rule', 'theorem', 'formula', 'formulas', 'law', 'method', 'concept', 
+                          'definition', 'principle', 'technique', 'identities', 'identity']
         
         is_explanation_question = any(text.startswith(es) or es in text for es in explanation_starters)
         has_concept_keyword = any(ck in text for ck in concept_keywords)

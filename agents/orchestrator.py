@@ -521,7 +521,10 @@ Instructions:
 1. Explain the concept clearly and thoroughly
 2. Cite your sources using [Source: filename] format where applicable
 3. If the question asks for an example, provide a clear worked example
-4. Use proper mathematical notation
+4. Use proper mathematical notation:
+   - Use '^' for exponents (e.g., x^2 not x2)
+   - Use standard algebra notation (e.g., 2ab instead of 2*a*b, 5x instead of 5*x)
+   - Use '/' for division
 5. Make it easy to understand for a student
 
 Provide your explanation:"""

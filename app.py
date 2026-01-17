@@ -5,6 +5,7 @@ ChatGPT-Style UI Redesign
 
 import streamlit as st
 import os
+import re
 import tempfile
 from pathlib import Path
 from PIL import Image
@@ -585,7 +586,11 @@ def render_assistant_message(message: str, show_label: bool = True):
     # Remove backticks (code formatting) - show math directly
     html_message = re.sub(r'`([^`]+)`', r'\1', html_message)
     
-    # Format derivative notation: dA/dx -> fraction HTML (derivative of A with respect to x)
+    # Format derivative notation: derivative of A with respect to x
+    # Match complex patterns: d(expression)/dx - handle nested parens by looking ahead for /d
+    # Regex explanation: d followed by anything in parens (balanced or not, simple greedy) until we hit /d[var]
+    html_message = re.sub(r'\bd\((.+?)\)/d([a-zA-Z])\b', lambda m: make_derivative_html(f"({m.group(1)})", m.group(2)), html_message)
+    
     # Match patterns like dA/dx, dV/dr, dy/dx
     html_message = re.sub(r'\bd([A-Za-z])/d([a-zA-Z])\b', lambda m: make_derivative_html(m.group(1), m.group(2)), html_message)
     
@@ -597,15 +602,18 @@ def render_assistant_message(message: str, show_label: bool = True):
     
     # Math formatting: x**2 -> x<sup>2</sup>, x^3 -> x<sup>3</sup>, e^(3x) -> e<sup>3x</sup>
     # Handle parens: x^(n-1) -> x<sup>n-1</sup>
-    html_message = re.sub(r'([a-zA-Z0-9])\*\*(\d+)', r'\1<sup>\2</sup>', html_message)
-    html_message = re.sub(r'([a-zA-Z0-9])\^(\d+)', r'\1<sup>\2</sup>', html_message)
+    # Handle parenthesized base: (a+b)^2 -> (a+b)<sup>2</sup>
+    html_message = re.sub(r'(\))\^([-+]?[a-zA-Z0-9]+)', r'\1<sup>\2</sup>', html_message)
+    html_message = re.sub(r'([a-zA-Z0-9])\^([-+]?[a-zA-Z0-9]+)', r'\1<sup>\2</sup>', html_message)
     html_message = re.sub(r'([a-zA-Z0-9])\^\(([^)]+)\)', r'\1<sup>\2</sup>', html_message)
     
-    # Remove multiplication signs with spaces: 4 * p³ -> 4p³
-    html_message = re.sub(r'(\d+)\s*\*\s*([a-zA-Z])', r'\1\2', html_message)
+    # Replace multiplication signs with symbol: 4*p -> 4 × p, a*b -> a × b
+    # Use Regex to avoid breaking **bold** markdown!
+    # Look for * that is NOT part of **
+    html_message = re.sub(r'(?<!\*)\*(?!\*)', ' × ', html_message)
     
-    # Remove multiplication signs without spaces: 3*x -> 3x
-    html_message = re.sub(r'(\d)\*([a-zA-Z])', r'\1\2', html_message)
+    # Remove extra spaces around the symbol if needed
+    html_message = re.sub(r'\s+×\s+', ' × ', html_message)
     
     # Replace sqrt with √
     html_message = html_message.replace('sqrt(', '√(')
@@ -927,7 +935,29 @@ def main():
                         st.session_state.processing_complete = True
                         
                         if result['status'] == 'success':
-                            response = f"**Answer**: {result.get('answer', 'See explanation')}\n\n{result.get('explanation', '')}"
+                            answer_text = result.get('answer', 'See explanation')
+                            explanation_text = result.get('explanation', '')
+                            
+                            # Iteratively remove answer text from start (handle multiple repetitions)
+                            clean_loop = True
+                            while clean_loop:
+                                original_len = len(explanation_text)
+                                # Remove "Answer:" header if it reappears
+                                explanation_text = re.sub(r'^\s*(\*\*|#+\s*)?Answer\s*:?\s*', '', explanation_text, flags=re.IGNORECASE).strip()
+                                
+                                if answer_text and answer_text.lower() != "see explanation":
+                                    ans_pattern = re.escape(answer_text)
+                                    ans_pattern = ans_pattern.replace(r'\ ', r'\s*')
+                                    explanation_text = re.sub(r'^' + ans_pattern + r'\s*', '', explanation_text, flags=re.IGNORECASE).strip()
+                                
+                                if len(explanation_text) == original_len:
+                                    clean_loop = False
+
+                            # If answer is just "See explanation below", don't double print
+                            if "see explanation" in answer_text.lower():
+                                response = f"**Answer**:\n\n{explanation_text}"
+                            else:
+                                response = f"**Answer**: {answer_text}\n\n{explanation_text}"
                         else:
                             response = result.get('explanation', 'I could not solve this problem. Please try rephrasing.')
                         

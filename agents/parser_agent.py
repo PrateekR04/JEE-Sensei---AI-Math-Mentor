@@ -148,6 +148,23 @@ Return only one word.
                     "is_direct_calculation": True  # Mark for special handling
                 }
             
+            # Check for Explanation/Knowledge requests (NEW - "give me a list", "what is", etc.)
+            explanation_keywords = [
+                'give me', 'list of', 'show me', 'what is', 'explain', 'define',
+                'identities', 'formulas', 'theorem', 'tell me about'
+            ]
+            if any(kw in text_lower for kw in explanation_keywords):
+                return {
+                    "problem_text": problem_text,
+                    "topic": topic,
+                    "variables": [],
+                    "constraints": [],
+                    "normalized_equation": None,
+                    "normalization_error": None,
+                    "needs_clarification": False,  # Allow explanation handler
+                    "error_type": None
+                }
+            
             # Only block if truly unclear
             return {
                 "problem_text": problem_text,
