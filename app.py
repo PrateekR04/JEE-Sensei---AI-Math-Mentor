@@ -569,14 +569,6 @@ def render_assistant_message(message: str, show_label: bool = True):
     """Render an assistant message bubble."""
     import re
     
-    # Unicode superscripts for math formatting
-    superscripts = {'0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
-                   '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
-                   '-': '⁻', '+': '⁺', '(': '⁽', ')': '⁾', 'n': 'ⁿ'}
-    
-    def to_superscript(text):
-        return ''.join(superscripts.get(c, c) for c in str(text))
-    
     # HTML template for fraction-style derivative: d/dx or dA/dx
     def make_derivative_html(func, var):
         if func:
@@ -603,10 +595,11 @@ def render_assistant_message(message: str, show_label: bool = True):
     # Format integral symbol: integrate, integral, ∫ -> proper integral symbol
     html_message = html_message.replace('∫', make_integral_html())
     
-    # Math formatting: x**2 -> x², x^3 -> x³, also handle with parentheses like (n-1)
-    html_message = re.sub(r'([a-zA-Z])\*\*(\d+)', lambda m: m.group(1) + to_superscript(m.group(2)), html_message)
-    html_message = re.sub(r'([a-zA-Z])\^(\d+)', lambda m: m.group(1) + to_superscript(m.group(2)), html_message)
-    html_message = re.sub(r'([a-zA-Z])\^\(([^)]+)\)', lambda m: m.group(1) + to_superscript('(' + m.group(2) + ')'), html_message)
+    # Math formatting: x**2 -> x<sup>2</sup>, x^3 -> x<sup>3</sup>, e^(3x) -> e<sup>3x</sup>
+    # Handle parens: x^(n-1) -> x<sup>n-1</sup>
+    html_message = re.sub(r'([a-zA-Z0-9])\*\*(\d+)', r'\1<sup>\2</sup>', html_message)
+    html_message = re.sub(r'([a-zA-Z0-9])\^(\d+)', r'\1<sup>\2</sup>', html_message)
+    html_message = re.sub(r'([a-zA-Z0-9])\^\(([^)]+)\)', r'\1<sup>\2</sup>', html_message)
     
     # Remove multiplication signs with spaces: 4 * p³ -> 4p³
     html_message = re.sub(r'(\d+)\s*\*\s*([a-zA-Z])', r'\1\2', html_message)

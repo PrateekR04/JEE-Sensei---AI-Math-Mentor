@@ -58,15 +58,17 @@ class CalculusParserAgent:
             prefixes = ['find the derivative of', 'derivative of', 'differentiate', 
                        'd/dx', 'dy/dx', "find f'(x) for", "find f' of",
                        "what is the derivative of", "calculate the derivative of",
-                       "find the derivative"]  # Added this
+                       "find the derivative", "how to differentiate", "how do i differentiate", 
+                       "how do you differentiate", "how to find derivative of", "how to"]
             # Sort by length descending to match longer prefixes first
             prefixes.sort(key=len, reverse=True)
             for prefix in prefixes:
                 text_clean = text_clean.replace(prefix, '')
         
         elif calc_type == "integral":
-            prefixes = ['find the integral of', 'integral of', 'integrate', 
-                       'find the antiderivative of', '∫']
+            prefixes = ['how to integrate', 'how do i integrate', 'how do you integrate',
+                       'find the integral of', 'integral of', 'integrate', 
+                       'find the antiderivative of', '∫', 'how to']
             prefixes.sort(key=len, reverse=True)
             for prefix in prefixes:
                 text_clean = text_clean.replace(prefix, '')
