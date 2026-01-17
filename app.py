@@ -570,12 +570,16 @@ def render_assistant_message(message: str, show_label: bool = True):
     """Render an assistant message bubble."""
     import re
     
-    # HTML template for fraction-style derivative: d/dx or dA/dx
+    # HTML template for fraction-style derivative or probability
+    def make_fraction_html(numerator, denominator):
+        return f'<span style="display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-style:italic;line-height:1;"><span style="border-bottom:1px solid currentColor;padding:0 2px;">{numerator}</span><span style="padding:0 2px;">{denominator}</span></span>'
+
+    # HTML template for derivative (wraps fraction)
     def make_derivative_html(func, var):
         if func:
-            return f'<span style="display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-style:italic;line-height:1;"><span style="border-bottom:1px solid currentColor;padding:0 2px;">𝑑{func}</span><span style="padding:0 2px;">𝑑{var}</span></span>'
+            return make_fraction_html(f"𝑑{func}", f"𝑑{var}")
         else:
-            return f'<span style="display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-style:italic;line-height:1;"><span style="border-bottom:1px solid currentColor;padding:0 2px;">𝑑</span><span style="padding:0 2px;">𝑑{var}</span></span>'
+            return make_fraction_html("𝑑", f"𝑑{var}")
     
     # HTML template for integral symbol
     def make_integral_html():
@@ -583,12 +587,20 @@ def render_assistant_message(message: str, show_label: bool = True):
     
     html_message = message
     
+    # Header Fix: Ensure ## headers have newlines before them
+    html_message = re.sub(r'([^\n])\s*(#{2,6}\s)', r'\1\n\n\2', html_message)
+    
     # Remove backticks (code formatting) - show math directly
     html_message = re.sub(r'`([^`]+)`', r'\1', html_message)
     
+    # Format Probability Fractions: P(A)/P(B) or P(B|A) × P(A) / P(B)
+    # Matches P(...) followed by optional multiplications, divided by P(...)
+    # Be careful not to match standard text division
+    prob_pattern = r'((?:P\([^)]+\)(?:\s*[×*]\s*)?)+)\s*/\s*(P\([^)]+\))'
+    html_message = re.sub(prob_pattern, lambda m: make_fraction_html(m.group(1), m.group(2)), html_message)
+    
     # Format derivative notation: derivative of A with respect to x
-    # Match complex patterns: d(expression)/dx - handle nested parens by looking ahead for /d
-    # Regex explanation: d followed by anything in parens (balanced or not, simple greedy) until we hit /d[var]
+    # Match patterns like d(expression)/dx
     html_message = re.sub(r'\bd\((.+?)\)/d([a-zA-Z])\b', lambda m: make_derivative_html(f"({m.group(1)})", m.group(2)), html_message)
     
     # Match patterns like dA/dx, dV/dr, dy/dx
@@ -606,6 +618,9 @@ def render_assistant_message(message: str, show_label: bool = True):
     html_message = re.sub(r'(\))\^([-+]?[a-zA-Z0-9]+)', r'\1<sup>\2</sup>', html_message)
     html_message = re.sub(r'([a-zA-Z0-9])\^([-+]?[a-zA-Z0-9]+)', r'\1<sup>\2</sup>', html_message)
     html_message = re.sub(r'([a-zA-Z0-9])\^\(([^)]+)\)', r'\1<sup>\2</sup>', html_message)
+
+    # Format 'Step N:' to start on a new line with spacing
+    html_message = re.sub(r'(Step \d+:)', r'\n\n**\1**', html_message)
     
     # Replace multiplication signs with symbol: 4*p -> 4 × p, a*b -> a × b
     # Use Regex to avoid breaking **bold** markdown!
@@ -627,6 +642,12 @@ def render_assistant_message(message: str, show_label: bool = True):
     # Convert markdown to HTML
     # Bold: **text** -> <strong>text</strong>
     html_message = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', html_message)
+    
+    # Headers: ### -> h4, ## -> h3
+    html_message = re.sub(r'###\s+([^\n]+)', r'<h4>\1</h4>', html_message)
+    html_message = re.sub(r'##\s+([^\n]+)', r'<h3>\1</h3>', html_message)
+    # Bold Step labels (from previous regex addition): **Step N:** -> <strong>Step N:</strong>
+    # (Already handled by bold regex above, but good to ensure)
     
     # Line breaks
     html_message = html_message.replace('\n\n', '<br><br>').replace('\n', '<br>')

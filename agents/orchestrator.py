@@ -115,9 +115,19 @@ class MathMentorOrchestrator:
         trace = []
         
         try:
+            # Pre-check intent to avoid incorrect memory lookup for explanations
+            # (Explanation queries should strictly match knowledge base, not previous numerical problems)
+            pre_route = self.router.route({"problem_text": user_input})
+            is_explanation_intent = pre_route.get("intent") == "explanation"
+            
             # Step -1: Memory Lookup - Check for similar solved problems (NEW - Day 4)
-            print("🧠 Checking memory for similar problems...")
-            similar = self.check_similar_problems(user_input, threshold=0.85)
+            # Skip memory for explanations to avoid "Explain chain rule" matching "Explain integration of sin(x^2)"
+            similar = {"found": False}
+            if not is_explanation_intent:
+                print("🧠 Checking memory for similar problems...")
+                similar = self.check_similar_problems(user_input, threshold=0.85)
+            else:
+                print("🧠 Skipping memory for explanation query")
             
             if similar.get("found") and similar["best_match"]["similarity"] > 0.90:
                 # High-confidence match - reuse the solution

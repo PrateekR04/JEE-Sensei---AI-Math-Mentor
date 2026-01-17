@@ -313,14 +313,21 @@ For example: "The final answer is: x = 25 meters, y = 25 meters" or "The final a
                 working = self.llm.generate(fallback_prompt, temperature=0.1)
                 
                 # Try to extract answer from the LLM response
-                # Look for "The final answer is:" pattern first
+                # Look for "The final answer is:" pattern first (Strict matching)
                 final_answer_match = re.search(r'The final answer is[:\s]+([^\n]+)', working, re.IGNORECASE)
                 if final_answer_match:
                     extracted_answer = final_answer_match.group(1).strip().rstrip('.')
                 else:
-                    # Fallback: look for any "answer is" pattern
+                    # Fallback 1: Look for variable assignments at the very end
+                    # Matches "x = 500, y = 250" or similar at end of text
+                    var_match = re.search(r'([a-zA-Z]\s*=\s*[\d\.]+(?:\s*[a-zA-Z]+)?(?:,\s*[a-zA-Z]\s*=\s*[\d\.]+(?:\s*[a-zA-Z]+)?)*)[\.\s]*$', working)
+                    
+                    # Fallback 2: look for "answer is" but exclude "solutions found"
                     answer_match = re.search(r'(?:answer|result)\s+is[:\s]+([^\n]+)', working, re.IGNORECASE)
-                    if answer_match:
+                    
+                    if var_match:
+                        extracted_answer = var_match.group(1).strip()
+                    elif answer_match and "solution" not in answer_match.group(1).lower():
                         extracted_answer = answer_match.group(1).strip().rstrip('.')
                     else:
                         extracted_answer = "See explanation"

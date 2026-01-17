@@ -128,5 +128,31 @@
     "original_answer": "",
     "topic": "algebra",
     "intent": "explanation"
+  },
+  {
+    "feedback_id": "fb_000011",
+    "problem_id": "016953bd",
+    "is_correct": true,
+    "correction": null,
+    "error_category": null,
+    "user_id": "default",
+    "timestamp": "2026-01-18T00:15:41.984146",
+    "problem_text": "",
+    "original_answer": "",
+    "topic": "linear_algebra",
+    "intent": "system_of_equations"
+  },
+  {
+    "feedback_id": "fb_000012",
+    "problem_id": "00e80734",
+    "is_correct": true,
+    "correction": null,
+    "error_category": null,
+    "user_id": "default",
+    "timestamp": "2026-01-18T00:39:14.520666",
+    "problem_text": "",
+    "original_answer": "",
+    "topic": "algebra",
+    "intent": "explanation"
   }
 ]

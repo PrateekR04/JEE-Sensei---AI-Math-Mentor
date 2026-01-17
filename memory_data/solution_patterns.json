@@ -420,5 +420,38 @@
     "success_count": 1,
     "created": "2026-01-17T22:52:08.973071",
     "last_used": "2026-01-17T22:52:08.973072"
+  },
+  {
+    "id": "pat_000030",
+    "template_name": "system_equations",
+    "topic": "linear_algebra",
+    "intent": "system_of_equations",
+    "keywords": [
+      "find"
+    ],
+    "problem_structure": "V rectangular field is bounded by V fence V N sides and V straight stream on the fourth side. find t",
+    "solution_approach": "Step 1: Understand the problem - we have a rectangular field bounded by a fence on 3 sides and a straight stream on the fourth side. We need to find the dimensions of the field with the maximum area that can be enclosed with 1000 feet of fence. Step 2: Define the variables - let's say x is the length of the field (parallel to the stream) and y is the width of the field (perpendicular to the stream). We know that the total length of the fence is 1000 feet, so we can write an equation: 2y + x = 1000. Step 3: Express one variable in terms of the other - from the equation 2y + x = 1000, we can express x as x = 1000 - 2y. Step 4: Find the area of the field - the area A is given by A = xy. Substitute x from step 3 into this equation: A = (1000 - 2y)y = 1000y - 2y^2. Step 5: Find the maximum area - to find the maximum area, we need to find the critical points by taking the derivative of A with respect to y and setting it equal to 0: dA/dy = 1000 - 4y = 0. Solving for y, we get y = 250. Step 6: Find the corresponding value of x - substitute y = 250 into the equation x = 1000 - 2y: x = 1000 - 2(250) = 500. Step 7: Verify the solution - we can verify that the maximum area occurs at x = 500 and y = 250 by checking the second derivative or by using other methods.",
+    "equations": [
+      "2y + x = 1000",
+      "A = xy"
+    ],
+    "success_count": 1,
+    "created": "2026-01-18T00:15:41.983620",
+    "last_used": "2026-01-18T00:15:41.983622"
+  },
+  {
+    "id": "pat_000031",
+    "template_name": "probability",
+    "topic": "algebra",
+    "intent": "explanation",
+    "keywords": [
+      "probability"
+    ],
+    "problem_structure": "explain baye'V theorem in probability .",
+    "solution_approach": "## Introduction to Bayes' Theorem\n\nBayes' Theorem is a fundamental concept in probability theory that helps us update our beliefs or probabilities based on new evidence or information. It is a powerful tool for making predictions, classifications, and decisions under uncertainty. In this explanation, we will delve into the concept of Bayes' Theorem, its formula, and provide a worked example to illustrate its application.\n\n## What is Bayes' Theorem?\n\nBayes' Theorem is a mathematical formula that describes how to update the probability of a hypothesis (A) given new evidence (B). It is based on the concept of conditional probability, which is the probability of an event occurring given that another event has occurred. The formula for Bayes' Theorem is:\n\nP(A|B) = P(B|A) \u00d7 P(A) / P(B)\n\nwhere:\n\n- P(A|B) is the posterior probability of A given B (the probability of A after observing B)\n- P(B|A) is the likelihood of B given A (the probability of observing B if A is true)\n- P(A) is the prior probability of A (the probability of A before observing B)\n- P(B) is the marginal probability of B (the probability of observing B)\n\n[Source: Conditional Probability]\n\n## How Does Bayes' Theorem Work?\n\nTo understand how Bayes' Theorem works, let's break down the formula:\n\n1. **Prior Probability (P(A))**: This is our initial belief or probability of the hypothesis (A) before observing any new evidence.\n2. **Likelihood (P(B|A))**: This is the probability of observing the new evidence (B) if the hypothesis (A) is true.\n3. **Marginal Probability (P(B))**: This is the overall probability of observing the new evidence (B), regardless of whether the hypothesis (A) is true or not.\n4. **Posterior Probability (P(A|B))**: This is the updated probability of the hypothesis (A) after observing the new evidence (B).\n\nBy multiplying the likelihood and prior probability and dividing by the marginal probability, we get the posterior probability, which represents our updated belief or probability of the hypothesis after observing the new evidence.\n\n## Worked Example\n\nSuppose we want to determine the probability that a person has a certain disease (A) given that they test positive (B) for the disease. Let's assume:\n\n- P(A) = 0.01 (1% of the population has the disease)\n- P(B|A) = 0.99 (99% of people with the disease test positive)\n- P(B) = 0.02 (2% of the population tests positive)\n\nUsing Bayes' Theorem, we can calculate the posterior probability:\n\nP(A|B) = P(B|A) \u00d7 P(A) / P(B)\n= 0.99 \u00d7 0.01 / 0.02\n= 0.495\n\nSo, the probability that a person has the disease given that they test positive is approximately 49.5%.\n\n## Conclusion\n\nBayes' Theorem is a powerful tool for updating our probabilities based on new evidence or information. By understanding the concept of conditional probability and applying the formula, we can make more informed decisions and predictions under uncertainty. Remember to always consider the prior probability, likelihood, and marginal probability when applying Bayes' Theorem.\n\n[Source: Probability Problems]\n\nI hope this explanation helps you understand Bayes' Theorem and its application in probability theory. If you have any further questions or need more examples, feel free to ask!",
+    "equations": [],
+    "success_count": 1,
+    "created": "2026-01-18T00:39:14.520065",
+    "last_used": "2026-01-18T00:39:14.520067"
   }
 ]

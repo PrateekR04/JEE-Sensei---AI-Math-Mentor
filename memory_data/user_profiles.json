@@ -43,11 +43,11 @@
   "default": {
     "user_id": "default",
     "created": "2026-01-16T17:49:17.733274",
-    "last_active": "2026-01-17T22:52:08.975806",
+    "last_active": "2026-01-18T00:39:14.523210",
     "topics": {
       "algebra": {
-        "attempts": 27,
-        "correct": 27,
+        "attempts": 29,
+        "correct": 29,
         "intents": {
           "equation": {
             "attempts": 16,
@@ -58,12 +58,12 @@
             "correct": 9
           },
           "explanation": {
-            "attempts": 2,
-            "correct": 2
+            "attempts": 4,
+            "correct": 4
           }
         },
-        "last_attempt": "2026-01-17T22:52:08.975809",
-        "avg_confidence": 0.7927549584877307
+        "last_attempt": "2026-01-18T00:39:14.523213",
+        "avg_confidence": 0.8001511682471975
       },
       "calculus": {
         "attempts": 12,
@@ -86,16 +86,16 @@
         "avg_confidence": 0.7583333333333333
       },
       "linear_algebra": {
-        "attempts": 1,
-        "correct": 1,
+        "attempts": 3,
+        "correct": 3,
         "intents": {
           "system_of_equations": {
-            "attempts": 1,
-            "correct": 1
+            "attempts": 3,
+            "correct": 3
           }
         },
-        "last_attempt": "2026-01-16T17:58:04.914663",
-        "avg_confidence": 0.65
+        "last_attempt": "2026-01-18T00:15:41.986718",
+        "avg_confidence": 0.8166666666666668
       },
       "probability": {
         "attempts": 3,
@@ -124,10 +124,10 @@
     },
     "explanation_depth": "medium",
     "preferred_method": null,
-    "total_problems": 44,
-    "total_correct": 44,
-    "streak": 44,
-    "max_streak": 44,
+    "total_problems": 48,
+    "total_correct": 48,
+    "streak": 48,
+    "max_streak": 48,
     "weak_topics": [],
     "frequent_errors": [],
     "sessions": [],
