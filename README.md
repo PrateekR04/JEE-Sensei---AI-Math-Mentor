@@ -1,242 +1,291 @@
-# Math Mentor AI - Day 1 Foundation
+<p align="center">
+  <img src="assets/home_screen.png" alt="JEE Sensei - AI Math Mentor" width="800"/>
+</p>
 
-A production-ready multimodal AI Math Mentor application with OCR and ASR capabilities.
+<h1 align="center">🧮 JEE Sensei - AI Math Mentor</h1>
 
-## 🚀 Features
+<p align="center">
+  <strong>Smarter than your calculator. Faster than your notes.</strong>
+</p>
 
-### Day 1 Implementation
-- **Multimodal Input Support**
-  - 📝 Text input
-  - 🖼️ Image upload with OCR (PaddleOCR)
-  - 🎤 Audio upload with ASR (Whisper)
+<p align="center">
+  <a href="https://jee-sensei.streamlit.app">
+    <img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Open in Streamlit"/>
+  </a>
+  <img src="https://img.shields.io/badge/Python-3.10+-blue.svg" alt="Python 3.10+"/>
+  <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"/>
+  <img src="https://img.shields.io/badge/RAG-Enabled-purple.svg" alt="RAG Enabled"/>
+</p>
 
-- **OCR Pipeline**
-  - PaddleOCR integration
-  - Text extraction from images (JPG/PNG)
-  - Confidence score calculation
-  - Editable preview box
+---
 
-- **ASR Pipeline**
-  - OpenAI Whisper integration
-  - Audio transcription (WAV/MP3/M4A/OGG)
-  - Confidence score calculation
-  - Editable transcript preview
+## 🎯 Overview
 
-- **User Experience**
-  - Clean Streamlit UI
-  - Input mode selector
-  - Editable text confirmation
-  - Confidence score display
-  - Real-time processing feedback
+**JEE Sensei** is an AI-powered math tutoring system designed specifically for JEE (Joint Entrance Examination) preparation. It uses a **multi-agent architecture** with **Retrieval-Augmented Generation (RAG)** to provide accurate, step-by-step solutions to complex mathematical problems.
 
-## 📁 Project Structure
+### ✨ Key Features
+
+- 🎤 **Multimodal Input** - Text, Voice (Whisper ASR), and Image (EasyOCR)
+- 🧠 **Multi-Agent System** - Specialized agents for different math domains
+- 📚 **RAG-Powered** - All solutions are backed by a curated knowledge base
+- ✅ **Solution Verification** - SymPy-based mathematical verification
+- 📊 **Confidence Scoring** - Transparency in solution reliability
+- 💾 **Memory System** - Learns from previous interactions
+
+---
+
+## 📸 Screenshots
+
+### Solution with Knowledge Sources
+<p align="center">
+  <img src="assets/solution_details.png" alt="Solution Details" width="700"/>
+</p>
+
+### Step-by-Step Explanations
+<p align="center">
+  <img src="assets/chain_rule_answer.png" alt="Chain Rule Explanation" width="700"/>
+</p>
+
+<p align="center">
+  <img src="assets/chain_rule_example.png" alt="Chain Rule Example" width="700"/>
+</p>
+
+---
+
+## 🏗️ Architecture
 
 ```
-math_mentor_ai/
-├── app.py                    # Main Streamlit application
-├── ocr/
-│   ├── __init__.py
-│   └── ocr_engine.py        # PaddleOCR integration
-├── asr/
-│   ├── __init__.py
-│   └── whisper_engine.py    # Whisper ASR integration
-├── utils/
-│   ├── __init__.py
-│   └── confidence.py        # Confidence calculation utilities
-├── requirements.txt         # Python dependencies
-└── README.md               # This file
+┌─────────────────────────────────────────────────────────────────┐
+│                        USER INPUT                                │
+│              (Text / Voice / Image)                              │
+└──────────────────────────┬──────────────────────────────────────┘
+                           │
+                           ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                     INPUT PROCESSING                             │
+│         OCR (EasyOCR) │ ASR (Whisper) │ Text                    │
+└──────────────────────────┬──────────────────────────────────────┘
+                           │
+                           ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                     INTENT ROUTER                                │
+│         Classifies: Algebra │ Calculus │ Probability │ Systems  │
+└──────────────────────────┬──────────────────────────────────────┘
+                           │
+           ┌───────────────┼───────────────┐
+           ▼               ▼               ▼
+┌──────────────┐  ┌──────────────┐  ┌──────────────┐
+│   PARSER     │  │   PARSER     │  │   PARSER     │
+│   AGENT      │  │   AGENT      │  │   AGENT      │
+└──────┬───────┘  └──────┬───────┘  └──────┬───────┘
+       │                 │                 │
+       ▼                 ▼                 ▼
+┌──────────────┐  ┌──────────────┐  ┌──────────────┐
+│   SOLVER     │  │   SOLVER     │  │   SOLVER     │
+│   AGENT      │  │   AGENT      │  │   AGENT      │
+└──────┬───────┘  └──────┬───────┘  └──────┬───────┘
+       │                 │                 │
+       └────────────┬────┴────────────────┘
+                    │
+                    ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                   RAG RETRIEVER                                  │
+│         FAISS Vector Store + Sentence Transformers              │
+└──────────────────────────┬──────────────────────────────────────┘
+                           │
+                    ┌──────┴──────┐
+                    ▼             ▼
+            ┌─────────────┐  ┌─────────────┐
+            │  KNOWLEDGE  │  │    LLM      │
+            │    BASE     │  │  (Groq)     │
+            └─────────────┘  └─────────────┘
+                    │             │
+                    └──────┬──────┘
+                           │
+                           ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                     VERIFIER AGENT                               │
+│              SymPy Mathematical Verification                     │
+└──────────────────────────┬──────────────────────────────────────┘
+                           │
+                           ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                     RESPONSE                                     │
+│         Answer + Step-by-Step Working + Sources                  │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-## 🛠️ Installation
+---
+
+## � Quick Start
 
 ### Prerequisites
-- Python 3.8 or higher
-- pip package manager
 
-### Setup
+- Python 3.10+
+- Groq API Key (free at [console.groq.com](https://console.groq.com))
 
-1. **Clone or navigate to the project directory:**
-   ```bash
-   cd math_mentor_ai
-   ```
+### Installation
 
-2. **Create a virtual environment (recommended):**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+```bash
+# Clone the repository
+git clone https://github.com/PrateekR04/JEE-Sensei---AI-Math-Mentor.git
+cd JEE-Sensei---AI-Math-Mentor
 
-3. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
 
-   **Note:** The first run will download the Whisper model (~140MB for base model) and PaddleOCR models automatically.
+# Install dependencies
+pip install -r requirements.txt
 
-## 🎯 Usage
+# Set up environment variables
+cp .env.example .env
+# Edit .env and add your GROQ_API_KEY
+```
 
-### Running the Application
+### Run Locally
 
 ```bash
 streamlit run app.py
 ```
 
-The application will open in your default browser at `http://localhost:8501`
-
-### Using the Application
-
-1. **Select Input Mode** (from sidebar):
-   - **Text**: Type your math problem directly
-   - **Image (OCR)**: Upload an image containing a math problem
-   - **Audio (ASR)**: Upload an audio recording of your question
-
-2. **Process Input**:
-   - For images: Click "Extract Text (OCR)"
-   - For audio: Click "Transcribe Audio (ASR)"
-   - For text: Click "Submit"
-
-3. **Review & Edit**:
-   - Review the extracted/transcribed text
-   - Check the confidence score
-   - Edit the text if needed
-
-4. **Confirm**:
-   - Click "Confirm & Submit" to finalize your input
-   - The input is now ready for backend processing
-
-## 🔧 Configuration
-
-### GPU Support
-
-To enable GPU acceleration (requires CUDA):
-
-1. Edit `requirements.txt`:
-   ```
-   # Comment out CPU version
-   # paddlepaddle==2.6.0
-   
-   # Uncomment GPU version
-   paddlepaddle-gpu==2.6.0
-   ```
-
-2. Update OCR initialization in `app.py`:
-   ```python
-   return OCREngine(use_gpu=True, lang='en')
-   ```
-
-### Whisper Model Size
-
-To use a different Whisper model (trade-off between speed and accuracy):
-
-Edit `app.py`:
-```python
-# Options: tiny, base, small, medium, large
-return WhisperEngine(model_size="small", device="cpu")
-```
-
-**Model Sizes:**
-- `tiny`: Fastest, least accurate (~39M parameters)
-- `base`: Good balance (~74M parameters) - **Default**
-- `small`: Better accuracy (~244M parameters)
-- `medium`: High accuracy (~769M parameters)
-- `large`: Best accuracy (~1550M parameters)
-
-## 📦 Dependencies
-
-### Core
-- `streamlit` - Web UI framework
-- `numpy` - Numerical operations
-- `pillow` - Image processing
-
-### OCR
-- `paddleocr` - OCR engine
-- `paddlepaddle` - Deep learning framework
-
-### ASR
-- `openai-whisper` - Speech recognition
-- `faster-whisper` - Optimized Whisper implementation
-
-### Audio Processing
-- `soundfile` - Audio I/O
-- `librosa` - Audio analysis
-
-## 🏗️ Architecture
-
-### Modular Design
-
-- **`app.py`**: Main Streamlit application with UI logic
-- **`ocr/ocr_engine.py`**: OCR functionality encapsulated in `OCREngine` class
-- **`asr/whisper_engine.py`**: ASR functionality with `WhisperEngine` and `FasterWhisperEngine` classes
-- **`utils/confidence.py`**: Reusable confidence calculation utilities
-
-### Error Handling
-
-- File validation
-- Format checking
-- Graceful fallbacks
-- User-friendly error messages
-
-### Performance Optimization
-
-- Model caching with `@st.cache_resource`
-- Temporary file cleanup
-- CPU/GPU flexibility
-
-## 🧪 Testing
-
-### Manual Testing
-
-1. **Text Input**: Enter a simple math problem
-2. **Image OCR**: Upload a clear image with printed/handwritten math
-3. **Audio ASR**: Upload a clear audio recording
-
-### Sample Test Cases
-
-- **OCR**: Upload an image of a math equation from a textbook
-- **ASR**: Record "What is 2 plus 2?" and upload
-- **Text**: Type "Solve x squared equals 16"
-
-## 🚧 Future Enhancements (Post Day-1)
-
-- [ ] LLM integration for math problem solving
-- [ ] Step-by-step solution generation
-- [ ] Math notation rendering (LaTeX)
-- [ ] Solution history
-- [ ] User authentication
-- [ ] Database integration
-- [ ] API endpoints
-- [ ] Batch processing
-- [ ] Multi-language support
-
-## 📝 Notes
-
-### Production Considerations
-
-- **Security**: No secrets in code, environment variables for API keys
-- **Scalability**: Modular architecture allows easy scaling
-- **Maintainability**: Clean code with docstrings and type hints
-- **Extensibility**: Easy to add new input modes or processing pipelines
-
-### Known Limitations
-
-- First run downloads models (one-time setup)
-- Large audio files may take time to process
-- OCR accuracy depends on image quality
-- Whisper requires significant memory for larger models
-
-## 📄 License
-
-This is a Day-1 foundation project for educational purposes.
-
-## 🤝 Contributing
-
-This is a foundational implementation. Future contributions welcome for:
-- Additional input modes
-- Improved error handling
-- Performance optimizations
-- UI/UX enhancements
+Open `http://localhost:8501` in your browser.
 
 ---
 
-**Built with ❤️ using Streamlit, EasyOCR, and Whisper**
+## 📁 Project Structure
 
+```
+math_mentor_ai/
+├── agents/                     # Multi-agent system
+│   ├── router_agent.py        # Intent classification
+│   ├── parser_agent.py        # Equation extraction
+│   ├── solver_agent.py        # General math solver
+│   ├── calculus_solver_agent.py
+│   ├── probability_solver_agent.py
+│   ├── system_solver_agent.py
+│   └── verifier_agent.py      # Solution verification
+├── rag/                        # RAG system
+│   ├── retriever.py           # Knowledge retrieval
+│   └── indexer.py             # Vector indexing
+├── knowledge_base/             # Curated math knowledge
+│   ├── algebra_linear.txt
+│   ├── algebra_quadratic.txt
+│   ├── calculus_formulas.txt
+│   ├── differentiation_rules.txt
+│   ├── integration_rules.txt
+│   └── probability_formulas.txt
+├── llm/                        # LLM integration
+│   └── groq_client.py
+├── ocr/                        # Image processing
+│   └── ocr_engine.py          # EasyOCR integration
+├── asr/                        # Voice processing
+│   └── whisper_engine.py      # Whisper ASR
+├── memory/                     # Learning from history
+│   └── memory_store.py
+├── tools/                      # Mathematical tools
+│   └── calculator.py          # SymPy calculator
+├── utils/                      # Utilities
+│   ├── confidence.py
+│   └── math_formatter.py
+├── app.py                      # Streamlit UI
+├── requirements.txt
+└── packages.txt               # System dependencies
+```
+
+---
+
+## 🧠 Supported Problem Types
+
+| Domain | Examples |
+|--------|----------|
+| **Algebra** | Linear equations, Quadratic equations, Systems of equations |
+| **Calculus** | Derivatives, Integrals, Limits, Optimization |
+| **Probability** | Coin flips, Dice problems, Card probability, Binomial |
+| **Trigonometry** | Basic identities, Derivatives of trig functions |
+
+---
+
+## 🔧 Configuration
+
+### Environment Variables
+
+```env
+GROQ_API_KEY=your_groq_api_key_here
+```
+
+### Streamlit Cloud Deployment
+
+1. Push to GitHub
+2. Connect repo to [streamlit.io/cloud](https://streamlit.io/cloud)
+3. Add `GROQ_API_KEY` to Secrets (TOML format):
+   ```toml
+   GROQ_API_KEY = "your_key_here"
+   ```
+
+---
+
+## 🛠️ Tech Stack
+
+| Component | Technology |
+|-----------|------------|
+| **Frontend** | Streamlit |
+| **LLM** | Groq (Llama 3.3 70B) |
+| **Embeddings** | Sentence Transformers (all-MiniLM-L6-v2) |
+| **Vector Store** | FAISS |
+| **Math Engine** | SymPy |
+| **OCR** | EasyOCR |
+| **ASR** | OpenAI Whisper |
+| **Deployment** | Streamlit Cloud |
+
+---
+
+## � Features in Detail
+
+### 🎯 Strict RAG Mode
+All solutions are generated using **only** the knowledge from the curated knowledge base. The system refuses to answer if sufficient context is not available, ensuring reliability and traceability.
+
+### ✅ Solution Verification
+Every solution is verified using SymPy to ensure mathematical correctness before being presented to the user.
+
+### 📝 Source Citations
+Each step in the solution is backed by citations from the knowledge base, providing transparency in the reasoning process.
+
+### 🔄 Feedback Loop
+Users can mark solutions as correct or incorrect, helping improve the system over time.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👨‍💻 Author
+
+**Prateek Roshan**
+
+- GitHub: [@PrateekR04](https://github.com/PrateekR04)
+
+---
+
+<p align="center">
+  <strong>Built with ❤️ using Streamlit, Groq, and AI</strong>
+</p>
+
+<p align="center">
+  <em>JEE Sensei — Making math accessible for everyone</em>
+</p>
