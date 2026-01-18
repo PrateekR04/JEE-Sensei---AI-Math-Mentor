@@ -63,8 +63,8 @@ class ProbabilityParserAgent:
         text_lower = text.lower()
         numbers = self._extract_numbers(text)
         
-        # Look for patterns like "2 heads in 3 flips"
-        match = re.search(r'(\d+)\s*heads?\s*(?:in|out of)?\s*(\d+)\s*(?:flips?|tosses?|trials?)', text_lower)
+        # Look for patterns like "exactly 3 heads in 5 coin flips" or "2 heads in 3 flips"
+        match = re.search(r'(?:exactly\s+|getting\s+)?(\d+)\s*heads?\s*(?:in|out of)?\s*(\d+)\s*(?:coin\s*)?(?:flips?|tosses?|trials?)', text_lower)
         if match:
             return {
                 "favorable": int(match.group(1)),
