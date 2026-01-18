@@ -15,7 +15,7 @@ openai-whisper>=20231117
 soundfile>=0.12.1
 
 # Additional utilities
-opencv-python>=4.8.0
+opencv-python-headless>=4.8.0
 
 # RAG System
 sentence-transformers>=2.2.0
