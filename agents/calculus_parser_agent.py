@@ -116,9 +116,24 @@ class CalculusParserAgent:
             text_clean = re.sub(pattern, replacement, text_clean, flags=re.IGNORECASE)
         
         # Extract mathematical expression pattern
+        # First, try to match math functions like sin(x), cos(x), log(x), etc.
+        math_funcs = r'(?:sin|cos|tan|cot|sec|csc|log|ln|exp|sqrt|arcsin|arccos|arctan|asin|acos|atan)'
+        
+        # Pattern 1: Match expressions starting with math functions
+        # e.g., sin(x), cos(x) + 1, log(x)/x, etc.
+        func_pattern = rf'({math_funcs}\s*\([^)]+\)(?:\s*[+\-*/^]\s*[0-9a-z()*\s^+\-/]+)*)'
+        match = re.search(func_pattern, text_clean, re.IGNORECASE)
+        if match:
+            expr = match.group(1).strip()
+            expr = re.sub(r'(\d)([xyt])', r'\1*\2', expr)  # 8x -> 8*x
+            expr = expr.replace('^', '**')  # ^ -> **
+            expr = expr.replace(' ', '')
+            if expr:
+                return expr
+        
+        # Pattern 2: Match polynomial-like expressions
         # Must contain at least one variable (x, y, t) and math symbols
-        # Match expressions like: x^3 + 8x + 16, sin(x), x**2 + 3*x, t^3 + 2t^2
-        # Use a more inclusive pattern that captures everything from first variable to end
+        # Match expressions like: x^3 + 8x + 16, x**2 + 3*x, t^3 + 2t^2
         match = re.search(r'((?:[0-9+\-*/^().\s]*[xyt])+[0-9+\-*/^().\sxyt]*)', text_clean)
         if match:
             expr = match.group(1).strip()
