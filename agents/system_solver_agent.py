@@ -217,7 +217,7 @@ Retrieved Knowledge:
 {context}
 
 Provide a clear step-by-step explanation with citations.
-At the END, you MUST write: "The final answer is: x = [value], y = [value]" (or similar for your variables)"""
+At the END, you MUST write on its own line: "**FINAL ANSWER:** x = [value], y = [value]" (or similar for your variables)"""
 
         try:
             working = self.llm.generate(prompt, temperature=0.1)

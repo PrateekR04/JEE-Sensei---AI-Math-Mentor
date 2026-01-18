@@ -250,8 +250,8 @@ Retrieved Knowledge:
 {context}
 
 Provide a clear step-by-step explanation with citations.
-At the END, you MUST write: "The final answer is: [probability as fraction and decimal]"
-For example: "The final answer is: 1/4 (0.25 or 25%)\""""
+At the END, you MUST write on its own line: "**FINAL ANSWER:** [probability as fraction and decimal]"
+For example: "**FINAL ANSWER:** 1/4 (0.25 or 25%)""""
 
         try:
             working = self.llm.generate(prompt, temperature=0.1)

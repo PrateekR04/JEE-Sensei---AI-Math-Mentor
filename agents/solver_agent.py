@@ -157,7 +157,7 @@ Instructions:
 3. For each formula you use, cite it as [Source: filename]
 4. For equations, use this format to call calculator: CALC[solve("equation", "variable")]
 5. Show your working step-by-step with citations
-6. At the END, you MUST write: "The final answer is: [your answer]"
+6. At the END, you MUST write on its own line: "**FINAL ANSWER:** [your answer]"
 
 If any required formula is missing from the retrieved knowledge, stop and respond with "INSUFFICIENT CONTEXT: Missing [formula name]"
 
@@ -322,19 +322,36 @@ Solve the problem now using ONLY the retrieved knowledge above:"""
     
     def _extract_answer(self, solution_text: str) -> str:
         """Extract final answer from solution text."""
-        lines = solution_text.split('\\n')
+        # Pattern 1: Look for **FINAL ANSWER:** format (preferred)
+        final_answer_match = re.search(r'\*\*FINAL ANSWER:\*\*\s*(.+?)(?:\n|$)', solution_text, re.IGNORECASE)
+        if final_answer_match:
+            return final_answer_match.group(1).strip()
         
-        # Look for "Answer:" or "Final answer:" or similar
+        # Pattern 2: Look for "The final answer is:" format
+        final_answer_match = re.search(r'[Tt]he final answer is[:\s]+([^\n]+)', solution_text)
+        if final_answer_match:
+            return final_answer_match.group(1).strip().rstrip('.')
+        
+        # Pattern 3: Look for "FINAL ANSWER:" without bold
+        final_answer_match = re.search(r'FINAL ANSWER[:\s]+([^\n]+)', solution_text, re.IGNORECASE)
+        if final_answer_match:
+            return final_answer_match.group(1).strip()
+        
+        lines = solution_text.split('\n')
+        
+        # Pattern 4: Look for "Answer:" or similar keywords
         for line in reversed(lines):
             if any(keyword in line.lower() for keyword in ['answer:', 'solution:', 'result:']):
-                return line.split(':', 1)[1].strip()
+                parts = line.split(':', 1)
+                if len(parts) > 1:
+                    return parts[1].strip()
         
         # Fallback: return last non-empty line
         for line in reversed(lines):
             if line.strip() and not line.strip().startswith('[Source:'):
                 return line.strip()
         
-        return "No answer found"
+        return "See explanation above"
 
 
 def main():

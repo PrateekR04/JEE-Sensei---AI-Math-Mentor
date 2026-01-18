@@ -303,34 +303,32 @@ Problem: {problem_text}
 Retrieved Knowledge:
 {context}
 
-Solve the problem showing your working. At the very end, you MUST write exactly:
-"The final answer is: [your answer here]"
+Solve the problem showing your working. At the very end, you MUST write on its own line:
+"**FINAL ANSWER:** [your answer here]"
 
-For example: "The final answer is: x = 25 meters, y = 25 meters" or "The final answer is: 625 square meters"
+For example: "**FINAL ANSWER:** x = 25 meters, y = 25 meters" or "**FINAL ANSWER:** Maximum volume = 128 cubic inches"
 """
 
             try:
                 working = self.llm.generate(fallback_prompt, temperature=0.1)
                 
                 # Try to extract answer from the LLM response
-                # Look for "The final answer is:" pattern first (Strict matching)
-                final_answer_match = re.search(r'The final answer is[:\s]+([^\n]+)', working, re.IGNORECASE)
+                # Look for **FINAL ANSWER:** format first (Strict matching)
+                final_answer_match = re.search(r'\*\*FINAL ANSWER:\*\*\s*(.+?)(?:\n|$)', working, re.IGNORECASE)
                 if final_answer_match:
-                    extracted_answer = final_answer_match.group(1).strip().rstrip('.')
+                    extracted_answer = final_answer_match.group(1).strip()
                 else:
-                    # Fallback 1: Look for variable assignments at the very end
-                    # Matches "x = 500, y = 250" or similar at end of text
-                    var_match = re.search(r'([a-zA-Z]\s*=\s*[\d\.]+(?:\s*[a-zA-Z]+)?(?:,\s*[a-zA-Z]\s*=\s*[\d\.]+(?:\s*[a-zA-Z]+)?)*)[\.\s]*$', working)
-                    
-                    # Fallback 2: look for "answer is" but exclude "solutions found"
-                    answer_match = re.search(r'(?:answer|result)\s+is[:\s]+([^\n]+)', working, re.IGNORECASE)
-                    
-                    if var_match:
-                        extracted_answer = var_match.group(1).strip()
-                    elif answer_match and "solution" not in answer_match.group(1).lower():
-                        extracted_answer = answer_match.group(1).strip().rstrip('.')
+                    # Fallback 1: Look for "The final answer is:" pattern
+                    final_answer_match = re.search(r'[Tt]he final answer is[:\s]+([^\n]+)', working)
+                    if final_answer_match:
+                        extracted_answer = final_answer_match.group(1).strip().rstrip('.')
                     else:
-                        extracted_answer = "See explanation"
+                        # Fallback 2: Look for variable assignments at the very end
+                        var_match = re.search(r'([a-zA-Z]\s*=\s*[\d\.]+(?:\s*[a-zA-Z]+)?(?:,\s*[a-zA-Z]\s*=\s*[\d\.]+(?:\s*[a-zA-Z]+)?)*)[\.\s]*$', working)
+                        if var_match:
+                            extracted_answer = var_match.group(1).strip()
+                        else:
+                            extracted_answer = "See explanation"
                 
                 return {
                     "answer": format_answer(extracted_answer),
