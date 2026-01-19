@@ -88,3 +88,7 @@ htmlcov/
 # Temporary files
 *.tmp
 *.temp
+
+# Architecture documentation (internal)
+ARCHITECTURE.md
+

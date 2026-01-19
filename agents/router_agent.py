@@ -118,6 +118,27 @@ class RouterAgent:
         if any(kw in text for kw in ['factorial', 'squared', 'cubed']) and equals_count == 0:
             return "direct_calculation"
         
+        # NEW: Simple arithmetic detection (for "15 + 12 = ?" type questions)
+        # Must come BEFORE equation fallback to avoid sending to strict RAG
+        # Supports: +, -, *, /, x (multiplication), % (modulus)
+        if equals_count == 1:
+            # Check if it's pure arithmetic: "number operator number = ?"
+            # Pattern matches: "15 + 12 = ?", "100 / 4 = ?", "17 % 5 = ?", etc.
+            simple_arith = re.search(r'^[\s\d\.\+\-\*\/x\%\(\)\s]+\s*=\s*\??\s*$', text)
+            if simple_arith:
+                return "direct_calculation"
+            
+            # Also check: only numbers and operators before the =, with ? or empty after
+            before_equals = text.split('=')[0].strip()
+            after_equals = text.split('=')[1].strip() if len(text.split('=')) > 1 else ""
+            
+            # If before = is just numbers and operators, and after = is ? or empty
+            is_pure_arithmetic = bool(re.match(r'^[\d\s\+\-\*\/x\%\.\(\)]+$', before_equals))
+            is_asking_result = after_equals in ['', '?'] or after_equals.strip() == '?'
+            
+            if is_pure_arithmetic and is_asking_result:
+                return "direct_calculation"
+        
         # Single equation (fallback if contains '=')
         if equals_count == 1:
             return "equation"
