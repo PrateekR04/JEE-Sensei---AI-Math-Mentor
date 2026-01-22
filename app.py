@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Import custom modules
-from ocr.ocr_engine import OCREngine
+from ocr.hybrid_ocr_engine import HybridOCREngine
 from asr.whisper_engine import WhisperEngine
 from utils.confidence import (
     format_confidence_percentage,
@@ -703,13 +703,196 @@ def render_welcome_card():
 
 
 # ============================================================================
+# STRUCTURED OUTPUT PANELS (NEW)
+# ============================================================================
+def render_latex_preview(latex_question: str):
+    """
+    Render LaTeX preview panel for extracted question.
+    
+    Args:
+        latex_question: LaTeX formatted question from Gemini Vision
+    """
+    if not latex_question:
+        return
+    
+    st.markdown("""
+    <div style="
+        background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+        border: 1px solid rgba(102, 126, 234, 0.3);
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    ">
+        <div style="
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #667eea;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        ">
+            📐 LaTeX Preview
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Clean LaTeX for rendering
+    display_latex = latex_question.strip()
+    
+    # Remove outer delimiters
+    if display_latex.startswith('$$') and display_latex.endswith('$$'):
+        display_latex = display_latex[2:-2].strip()
+    elif display_latex.startswith('$') and display_latex.endswith('$'):
+        display_latex = display_latex[1:-1].strip()
+    
+    display_latex = display_latex.replace('\\[', '').replace('\\]', '')
+    display_latex = display_latex.replace('\\(', '').replace('\\)', '')
+    display_latex = display_latex.replace('$', '').strip()
+    
+    try:
+        st.latex(display_latex)
+    except Exception:
+        try:
+            st.markdown(f"$$\n{display_latex}\n$$")
+        except Exception:
+            st.code(display_latex, language="latex")
+
+
+def render_editable_question(editable_question: str, key_suffix: str = ""):
+    """
+    Render editable question panel.
+    
+    Args:
+        editable_question: Human-readable question text
+        key_suffix: Suffix for unique widget key
+        
+    Returns:
+        Edited text from text area
+    """
+    if not editable_question:
+        return ""
+    
+    st.markdown("""
+    <div style="
+        background: linear-gradient(145deg, #2d2d44 0%, #252538 100%);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 12px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    ">
+        <div style="
+            color: #a5b4fc;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        ">
+            ✏️ Editable Question
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    return st.text_area(
+        "Edit your question if needed:",
+        value=editable_question,
+        height=120,
+        key=f"editable_question_{key_suffix}",
+        label_visibility="collapsed"
+    )
+
+
+def render_final_answer(final_answer: str):
+    """
+    Render final answer panel with prominent display.
+    
+    Args:
+        final_answer: The computed answer from solver
+    """
+    if not final_answer:
+        return
+    
+    st.markdown(f"""
+    <div style="
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        box-shadow: 0 8px 32px rgba(16, 185, 129, 0.25);
+    ">
+        <div style="
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        ">
+            ✅ FINAL ANSWER
+        </div>
+        <div style="
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+        ">
+            {final_answer}
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+
+def render_explanation(explanation: str):
+    """
+    Render explanation panel with preserved spacing.
+    
+    Args:
+        explanation: Step-by-step explanation from solver
+    """
+    if not explanation:
+        return
+    
+    st.markdown("""
+    <div style="
+        background: linear-gradient(145deg, #2d2d44 0%, #252538 100%);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+    ">
+        <div style="
+            color: #667eea;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        ">
+            📝 Step-by-Step Explanation
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Format explanation with proper spacing
+    # Replace step markers with styled headers
+    formatted = explanation
+    
+    # Add bold to Step N: patterns
+    formatted = re.sub(r'(Step\s*\d+:?)', r'**\1**', formatted, flags=re.IGNORECASE)
+    
+    # Ensure blank lines between steps
+    formatted = re.sub(r'\n\n+', '\n\n', formatted)
+    
+    # Convert newlines to proper display
+    st.markdown(formatted)
+
+
+# ============================================================================
 # CACHED RESOURCES
 # ============================================================================
 @st.cache_resource
 def load_ocr_engine():
-    """Load OCR engine (cached to avoid reloading)."""
+    """Load Hybrid OCR engine (Llama Vision + EasyOCR fallback)."""
     try:
-        return OCREngine(use_gpu=False, lang='en')
+        return HybridOCREngine(use_vlm=True, use_gpu=False)
     except Exception as e:
         st.error(f"Failed to load OCR engine: {str(e)}")
         return None
@@ -767,13 +950,26 @@ def main():
     # Apply ChatGPT-style CSS
     st.markdown(get_chatgpt_css(), unsafe_allow_html=True)
     
-    # App Header
-    st.markdown("""
-    <div class="app-header">
-        <div class="app-title">🧮 JEE Sensei</div>
-        <div class="app-subtitle">Smarter than your calculator. Faster than your notes.</div>
-    </div>
-    """, unsafe_allow_html=True)
+    # App Header with Sidebar Toggle
+    header_col1, header_col2 = st.columns([0.1, 0.9])
+    
+    with header_col1:
+        # Sidebar toggle button
+        if 'sidebar_collapsed' not in st.session_state:
+            st.session_state.sidebar_collapsed = False
+        
+        toggle_label = "☰" if st.session_state.sidebar_collapsed else "✕"
+        if st.button(toggle_label, key="sidebar_toggle", help="Toggle sidebar"):
+            st.session_state.sidebar_collapsed = not st.session_state.sidebar_collapsed
+            st.rerun()
+    
+    with header_col2:
+        st.markdown("""
+        <div class="app-header">
+            <div class="app-title">🧮 JEE Sensei</div>
+            <div class="app-subtitle">Smarter than your calculator. Faster than your notes.</div>
+        </div>
+        """, unsafe_allow_html=True)
     
     # Initialize session state
     if 'chat_history' not in st.session_state:
@@ -789,37 +985,50 @@ def main():
     if 'input_key' not in st.session_state:
         st.session_state.input_key = 0  # Used to clear input field
     
-    # Sidebar
-    with st.sidebar:
-        st.markdown("### ⚙️ Settings")
-        st.markdown("---")
-        
-        st.markdown("##### 📥 Input Mode")
-        input_mode = st.radio(
-            "Choose input method:",
-            ["📝 Text", "🖼️ Image (OCR)", "🎤 Audio (ASR)"],
-            index=0,
-            key="sidebar_input_mode"
-        )
-        
-        st.markdown("---")
-        st.markdown("### 💡 Capabilities")
-        st.markdown("""
-        ✅ Square roots & radicals  
-        ✅ Algebra & equations  
-        ✅ Calculus & derivatives  
-        ✅ Probability  
-        ✅ Word problems  
-        ✅ System of equations
-        """)
-        
-        st.markdown("---")
-        if st.button("🗑️ Clear Chat", use_container_width=True):
-            st.session_state.chat_history = []
-            st.session_state.current_result = None
-            st.session_state.extracted_text = ""
-            st.session_state.processing_complete = False
-            st.rerun()
+    # NEW: Structured output session state
+    if 'ocr_structured_output' not in st.session_state:
+        st.session_state.ocr_structured_output = None  # {latex_question, editable_question}
+    if 'solver_structured_output' not in st.session_state:
+        st.session_state.solver_structured_output = None  # {final_answer, explanation}
+    
+    # Sidebar (conditionally shown based on toggle)
+    if not st.session_state.get('sidebar_collapsed', False):
+        with st.sidebar:
+            st.markdown("### ⚙️ Settings")
+            st.markdown("---")
+            
+            st.markdown("##### 📥 Input Mode")
+            input_mode = st.radio(
+                "Choose input method:",
+                ["📝 Text", "🖼️ Image (OCR)", "🎤 Audio (ASR)"],
+                index=0,
+                key="sidebar_input_mode"
+            )
+            
+            st.markdown("---")
+            st.markdown("### 💡 Capabilities")
+            st.markdown("""
+            ✅ Square roots & radicals  
+            ✅ Algebra & equations  
+            ✅ Calculus & derivatives  
+            ✅ Probability  
+            ✅ Word problems  
+            ✅ System of equations
+            """)
+            
+            st.markdown("---")
+            if st.button("🗑️ Clear Chat", use_container_width=True):
+                st.session_state.chat_history = []
+                st.session_state.current_result = None
+                st.session_state.extracted_text = ""
+                st.session_state.processing_complete = False
+                st.session_state.ocr_structured_output = None
+                st.session_state.solver_structured_output = None
+                st.rerun()
+    else:
+        # When sidebar is collapsed, use default text input mode
+        input_mode = "📝 Text"
+
     
     # Main chat area
     if not st.session_state.chat_history:
@@ -927,13 +1136,208 @@ def main():
             conf_pct = f"{st.session_state.confidence:.0%}"
             st.caption(f"Extraction confidence: {conf_pct}")
         
-        # Editable text area
-        edited_input = st.text_area(
-            "Edit your question if needed:",
-            value=st.session_state.pending_input,
-            height=120,
-            key="edit_input"
-        )
+        pending_text = st.session_state.pending_input
+        
+        # Check if the text contains LaTeX (VLM now outputs LaTeX by default)
+        latex_markers = ['\\frac', '\\lim', '\\int', '\\sum', '\\sqrt', '\\to', '\\infty', '\\left', '\\right', '\\cdot', '\\prod']
+        has_latex = any(marker in pending_text for marker in latex_markers)
+        
+        # Function to convert LaTeX to human-readable ASCII
+        def latex_to_ascii(latex_text):
+            """Convert LaTeX math to human-readable ASCII format."""
+            ascii_text = latex_text
+            
+            # Order matters - do complex patterns first
+            replacements = [
+                # Limits
+                (r'\\lim_\{([^}]+)\s*\\to\s*\\infty\}', r'lim(\1→∞)'),
+                (r'\\lim_\{([^}]+)\s*\\to\s*([^}]+)\}', r'lim(\1→\2)'),
+                (r'\\lim_([a-zA-Z])\s*\\to\s*\\infty', r'lim(\1→∞)'),
+                # Fractions
+                (r'\\frac\{([^{}]+)\}\{([^{}]+)\}', r'(\1)/(\2)'),
+                # Nested fractions (simple)
+                (r'\\frac\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}', r'(\1)/(\2)'),
+                # Square roots
+                (r'\\sqrt\{([^}]+)\}', r'√(\1)'),
+                (r'\\sqrt\[([^]]+)\]\{([^}]+)\}', r'(\2)^(1/\1)'),  # nth root
+                # Products and sums
+                (r'\\prod_\{([^}]+)\}\^\{([^}]+)\}', r'∏[\1 to \2]'),
+                (r'\\sum_\{([^}]+)\}\^\{([^}]+)\}', r'Σ[\1 to \2]'),
+                # Integrals
+                (r'\\int_\{([^}]+)\}\^\{([^}]+)\}', r'∫[\1 to \2]'),
+                (r'\\int', '∫'),
+                # Brackets
+                (r'\\left\[', '['),
+                (r'\\right\]', ']'),
+                (r'\\left\(', '('),
+                (r'\\right\)', ')'),
+                (r'\\left\\\{', '{'),
+                (r'\\right\\\}', '}'),
+                (r'\\left\.', ''),
+                (r'\\right\.', ''),
+                # Superscripts and subscripts
+                (r'\^{([^}]+)}', r'^(\1)'),
+                (r'_\{([^}]+)\}', r'_(\1)'),
+                # Common symbols
+                (r'\\infty', '∞'),
+                (r'\\to', '→'),
+                (r'\\rightarrow', '→'),
+                (r'\\cdot', '·'),
+                (r'\\times', '×'),
+                (r'\\cdots', '...'),
+                (r'\\ldots', '...'),
+                (r'\\leq', '≤'),
+                (r'\\geq', '≥'),
+                (r'\\neq', '≠'),
+                (r'\\pm', '±'),
+                (r'\\pi', 'π'),
+                (r'\\alpha', 'α'),
+                (r'\\beta', 'β'),
+                (r'\\gamma', 'γ'),
+                (r'\\theta', 'θ'),
+                (r'\\phi', 'φ'),
+                (r'\\omega', 'ω'),
+                (r'\\partial', '∂'),
+                (r'\\nabla', '∇'),
+                # Clean up remaining LaTeX
+                (r'\\,', ' '),
+                (r'\\;', ' '),
+                (r'\\!', ''),
+                (r'\\quad', '  '),
+                (r'\\text\{([^}]+)\}', r'\1'),
+                (r'\\mathrm\{([^}]+)\}', r'\1'),
+                (r'\\mathbf\{([^}]+)\}', r'\1'),
+                # Remove remaining backslashes before known commands
+                (r'\\([a-zA-Z]+)', r'\1'),  # Fallback: just remove backslash
+            ]
+            
+            for pattern, replacement in replacements:
+                ascii_text = re.sub(pattern, replacement, ascii_text)
+            
+            # Clean up extra spaces and braces
+            ascii_text = re.sub(r'\{([^{}]+)\}', r'\1', ascii_text)  # Remove simple braces
+            ascii_text = re.sub(r'\s+', ' ', ascii_text).strip()
+            
+            return ascii_text
+        
+        if has_latex:
+            # Show rendered math preview in a styled container
+            st.markdown("""
+            <div style="
+                background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+                border: 1px solid rgba(102, 126, 234, 0.3);
+                border-radius: 16px;
+                padding: 1.5rem;
+                margin-bottom: 1rem;
+            ">
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    color: #667eea;
+                    font-weight: 600;
+                    font-size: 1.1rem;
+                ">
+                    📐 Extracted Math Expression (Rendered)
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # Prepare LaTeX for rendering
+            display_latex = pending_text.strip()
+            
+            # Remove outer $ or $$ wrappers
+            if display_latex.startswith('$$') and display_latex.endswith('$$'):
+                display_latex = display_latex[2:-2].strip()
+            elif display_latex.startswith('$') and display_latex.endswith('$'):
+                display_latex = display_latex[1:-1].strip()
+            
+            # Remove \[ \] and \( \) delimiters
+            display_latex = display_latex.replace('\\[', '').replace('\\]', '')
+            display_latex = display_latex.replace('\\(', '').replace('\\)', '')
+            display_latex = display_latex.replace('$', '').strip()
+            
+            # Try to render with st.latex (uses KaTeX)
+            try:
+                st.latex(display_latex)
+            except Exception:
+                try:
+                    st.markdown(f"$$\n{display_latex}\n$$")
+                except Exception:
+                    st.code(display_latex, language="latex")
+            
+            # Show raw LaTeX for reference
+            with st.expander("📝 View Raw LaTeX", expanded=False):
+                st.code(pending_text, language="latex")
+            
+            st.markdown("---")
+            
+            # Convert LaTeX to ASCII for the edit section
+            ascii_version = latex_to_ascii(pending_text)
+            
+            st.caption("💡 Edit your question below (converted to readable format)")
+            edited_input = st.text_area(
+                "Edit your question if needed:",
+                value=ascii_version,
+                height=120,
+                key="edit_input"
+            )
+        else:
+            # No LaTeX detected - just show the text
+            edited_input = st.text_area(
+                "Edit your question if needed:",
+                value=pending_text,
+                height=120,
+                key="edit_input"
+            )
+        
+        # Show a simplified version if it's LaTeX heavy (only for actual LaTeX)
+        if has_latex and len(pending_text) > 50:
+            with st.expander("🔄 Convert to plain text (experimental)"):
+                st.caption("If the LaTeX is too complex, paste a simplified version here:")
+                
+                # Convert LaTeX to plain text more intelligently
+                plain_hint = pending_text
+                
+                # Remove $ delimiters
+                plain_hint = plain_hint.replace('$', '')
+                
+                # Handle fractions: \frac{a}{b} -> (a)/(b)
+                plain_hint = re.sub(r'\\frac\{([^{}]+)\}\{([^{}]+)\}', r'(\1)/(\2)', plain_hint)
+                
+                # Handle limits: \lim_{n \to \infty} -> lim(n→∞)
+                plain_hint = re.sub(r'\\lim_\{([^{}]+)\\to\\s*([^{}]+)\}', r'lim(\1→\2)', plain_hint)
+                plain_hint = re.sub(r'\\lim_\{([^{}]+)\s*\\to\s*\\infty\}', r'lim(\1→∞)', plain_hint)
+                
+                # Handle subscripts: x_{n} -> x_n
+                plain_hint = re.sub(r'\{([^{}]+)\}', r'\1', plain_hint)  # Simple braces removal
+                
+                # Handle superscripts: x^{n} -> x^n (already handled above)
+                
+                # Simple symbol replacements
+                symbol_replacements = [
+                    ('\\left(', '('), ('\\right)', ')'),
+                    ('\\left[', '['), ('\\right]', ']'),
+                    ('\\left\\{', '{'), ('\\right\\}', '}'),
+                    ('\\cdots', '...'), ('\\ldots', '...'), ('\\dots', '...'),
+                    ('\\times', '×'), ('\\div', '÷'), ('\\cdot', '·'),
+                    ('\\sqrt', '√'), ('\\pi', 'π'),
+                    ('\\alpha', 'α'), ('\\beta', 'β'), ('\\gamma', 'γ'),
+                    ('\\theta', 'θ'), ('\\infty', '∞'),
+                    ('\\to', '→'), ('\\rightarrow', '→'), ('\\Rightarrow', '⇒'),
+                    ('\\leq', '≤'), ('\\geq', '≥'), ('\\neq', '≠'),
+                    ('\\pm', '±'), ('\\mp', '∓'),
+                    ('\\int', '∫'), ('\\sum', 'Σ'), ('\\prod', 'Π'),
+                    ('\\partial', '∂'), ('\\nabla', '∇'),
+                    ('\\', ''),  # Remove remaining backslashes
+                ]
+                for old, new in symbol_replacements:
+                    plain_hint = plain_hint.replace(old, new)
+                
+                # Clean up extra spaces
+                plain_hint = re.sub(r'\s+', ' ', plain_hint).strip()
+                
+                st.text_area("Simplified version (copy and edit above):", value=plain_hint, height=80, disabled=True)
         
         col1, col2, col3 = st.columns([1, 1, 1])
         

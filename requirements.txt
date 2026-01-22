@@ -3,10 +3,12 @@ streamlit>=1.31.0
 numpy>=1.24.0
 pillow>=10.0.0
 
-# OCR - Using EasyOCR
+# OCR - Using EasyOCR + Llama Vision (Groq API)
 easyocr>=1.7.0
 torch>=2.0.0
 torchvision>=0.15.0
+requests>=2.28.0
+
 
 # ASR
 openai-whisper>=20231117

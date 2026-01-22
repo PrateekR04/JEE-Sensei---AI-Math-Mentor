@@ -38,6 +38,9 @@ from memory.user_profile import UserProfile
 from memory.pattern_engine import PatternEngine
 from memory.correction_rules import CorrectionRules
 
+# Import LaTeX preprocessor for OCR output handling
+from utils.latex_preprocessor import LaTeXPreprocessor
+
 
 class MathMentorOrchestrator:
     """
@@ -115,9 +118,29 @@ class MathMentorOrchestrator:
         trace = []
         
         try:
+            # Step -2: LaTeX Preprocessing (for OCR output with LaTeX notation)
+            processed_input = user_input
+            was_latex = False
+            if LaTeXPreprocessor.is_latex(user_input):
+                print("📐 Detected LaTeX notation, preprocessing...")
+                processed_input, was_latex = LaTeXPreprocessor.preprocess(user_input)
+                trace.append({
+                    "agent": "LaTeXPreprocessor",
+                    "output": {
+                        "original": user_input[:200] + "..." if len(user_input) > 200 else user_input,
+                        "processed": processed_input[:200] + "..." if len(processed_input) > 200 else processed_input,
+                        "was_latex": was_latex
+                    }
+                })
+                if was_latex:
+                    print(f"   Converted to: {processed_input[:100]}...")
+            
+            # Use processed input for further steps
+            working_input = processed_input
+            
             # Pre-check intent to avoid incorrect memory lookup for explanations
             # (Explanation queries should strictly match knowledge base, not previous numerical problems)
-            pre_route = self.router.route({"problem_text": user_input})
+            pre_route = self.router.route({"problem_text": working_input})
             is_explanation_intent = pre_route.get("intent") == "explanation"
             
             # Step -1: Memory Lookup - Check for similar solved problems (NEW - Day 4)
@@ -125,7 +148,7 @@ class MathMentorOrchestrator:
             similar = {"found": False}
             if not is_explanation_intent:
                 print("🧠 Checking memory for similar problems...")
-                similar = self.check_similar_problems(user_input, threshold=0.85)
+                similar = self.check_similar_problems(working_input, threshold=0.85)
             else:
                 print("🧠 Skipping memory for explanation query")
             
@@ -197,7 +220,7 @@ class MathMentorOrchestrator:
             
             # Step 0: Word Problem Modeling (NEW - Day 4)
             print("📖 Checking for word problem...")
-            wp_result = self.word_problem_agent.model(user_input)
+            wp_result = self.word_problem_agent.model(working_input)
             
             if wp_result.get("is_word_problem"):
                 trace.append({"agent": "WordProblemAgent", "output": wp_result})
@@ -243,7 +266,7 @@ class MathMentorOrchestrator:
                     
                     # Create parsed input for system solver
                     parsed = {
-                        "problem_text": user_input,
+                        "problem_text": working_input,
                         "topic": "linear_algebra",
                         "variables": variables,
                         "constraints": equations,
@@ -275,7 +298,7 @@ class MathMentorOrchestrator:
                 elif modeling_type == "optimization":
                     # Optimization path - use calculus solver
                     parsed = {
-                        "problem_text": user_input,
+                        "problem_text": working_input,
                         "topic": "calculus",
                         "optimization": True,
                         "objective": wp_result.get("objective", ""),
@@ -306,7 +329,7 @@ class MathMentorOrchestrator:
                 elif modeling_type == "probability":
                     # Probability path
                     parsed = {
-                        "problem_text": user_input,
+                        "problem_text": working_input,
                         "topic": "probability",
                         "sample_space": wp_result.get("sample_space", ""),
                         "event": wp_result.get("event", ""),
@@ -384,7 +407,7 @@ class MathMentorOrchestrator:
             # Standard path for non-word-problems (EXISTING - DO NOT MODIFY)
             # Step 1: Parse
             print("🔍 Parsing problem...")
-            parsed = self.parser.parse(user_input)
+            parsed = self.parser.parse(working_input)
             trace.append({"agent": "Parser", "output": parsed})
             
             if parsed.get("needs_clarification"):
@@ -412,7 +435,7 @@ class MathMentorOrchestrator:
                 # Use retriever to get relevant knowledge
                 from rag.retriever import KnowledgeRetriever
                 retriever = KnowledgeRetriever()
-                relevant_docs = retriever.retrieve(user_input, k=3)
+                relevant_docs = retriever.retrieve(working_input, k=3)
                 
                 # Build context from RAG (results are dicts with 'content' and 'source')
                 context = "\n".join([doc.get("content", "") for doc in relevant_docs]) if relevant_docs else ""
@@ -424,7 +447,7 @@ class MathMentorOrchestrator:
                 
                 prompt = f"""You are a helpful math tutor. Answer this math question directly and show your work.
 
-Question: {user_input}
+Question: {working_input}
 
 Relevant Knowledge:
 {context}
@@ -510,7 +533,7 @@ EXPLANATION:
                 # Use retriever to get relevant knowledge
                 from rag.retriever import KnowledgeRetriever
                 retriever = KnowledgeRetriever()
-                relevant_docs = retriever.retrieve(user_input, k=5)
+                relevant_docs = retriever.retrieve(working_input, k=5)
                 
                 # Build context from RAG
                 context = "\n".join([doc.get("content", "") for doc in relevant_docs]) if relevant_docs else ""
@@ -522,7 +545,7 @@ EXPLANATION:
                 
                 prompt = f"""You are a helpful JEE math tutor. Answer this concept/explanation question.
 
-Question: {user_input}
+Question: {working_input}
 
 Relevant Knowledge from textbooks:
 {context}
